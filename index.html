@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html style="font-size:50px">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content=" initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+  <meta name = "format-detection" content = "telephone=no">
+  <title>js-xxy-popup Dome</title>
+  <link rel="stylesheet" href="xxy.css">
+</head>
+<body>
+  <span>xxy.popup</span><button  onclick="popup()">选择弹窗</button>
+  <span>xxy.toast</span><button onclick="toast()">自动消失提示</button>
+</body>
+<script src="xxy.js"></script>
+<script>
+	function popup(){
+		xxy.popup('githubDome','您觉得xxy弹窗做的如何？','好','不好',function(e){
+			if(e==0){
+			  xxy.toast('谢谢的你支持！');
+			}else{
+			  xxy.toast('xxy会继续加油↖(^ω^)↗');
+			}
+		});
+	}
+	function toast(){
+		xxy.toast('您好，我是阿拉丁神灯');
+	}
+</script>
+</html>
