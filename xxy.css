@@ -1,0 +1,103 @@
+/*
+*xxy弹窗样式
+*邮箱:abx_xf@126.com
+*/
+
+		#xxy-addDom .xxy-popup-box {
+			z-index: 99;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,.7);
+			position: fixed;
+			top: 0;
+			left: 0;
+			z-index: 99999999;
+			font-size:14px;
+			overflow:scroll;
+		}
+		#xxy-addDom .xxy-popup-box .inner{
+			width: 80%;
+			max-width:400px;
+			background: #fff;
+			position: absolute;
+			top:50%;left:50%;
+			color:#646464;
+			-webkit-transform: translateX(-50%) translateY(-50%);
+			-moz-transform: translateX(-50%) translateY(-50%);
+			-ms-transform: translateX(-50%) translateY(-50%);
+			transform: translateX(-50%) translateY(-50%);
+			/* position:fixed;top:50px; bottom:50px;overflow:scroll; */
+		}
+		#xxy-addDom .xxy-popup-box .xxy-popup-title{
+			width: 100%;
+		    border-bottom: 1px solid #E8E8E8;
+		    text-align: left;
+		    line-height: 2.1em;
+		    font-size: 13px;
+		    color: #646464;
+		    text-indent: .7em;
+		    background-color: #eee;
+		}
+		#xxy-addDom .xxy-popup-box .print{
+			padding:1.1em 1.5rem 0rem 1.5em;
+		}
+		#xxy-addDom .xxy-popup-box .or{width:90%;margin:0 auto;}
+		#xxy-addDom .xxy-popup-box button{
+			border-width: 0px;
+			color: #fff;
+			width: 48%;
+			margin: 1em 0;
+			padding: .6em 0;
+			border-radius:.4em;
+		}
+		#xxy-addDom .xxy-popup-box .xxy-popup-done{
+			background: #FEBB2C;
+		}
+		#xxy-addDom .xxy-popup-box .xxy-popup-cancal{
+			background: #eb4b27;
+			margin-left: 4%;
+		}
+		#xxy-addDom .xxy-popup-box .off{
+			font-size: 1.3em;
+			float: right;
+			margin-right: .4em;
+		}
+		
+		/*下单信息样式*/
+		#xxy-addDom .print_inner p span:nth-child(1){
+			text-align:right;
+		}
+		#xxy-addDom .print_inner p span:nth-child(2){
+			text-align:center;
+		}
+		#xxy-addDom .print_inner span{
+			display:inline-block;
+			width:48%;
+		}
+		#xxy-addDom .print_inner p .important{
+			color:#febb2c;
+		}
+		
+		/*toast*/
+		#xxy-addDom .xxy-toast{
+			font-size: 15px;
+			color: #fff;
+			position: fixed;
+			bottom: 2em;
+			background: rgba(0,0,0,.4);
+			line-height: 1.7em;
+			padding: 0 1em;
+			border-radius: 1em;
+			left: 50%;
+			-webkit-transform: translateX(-50%) translateY(-50%);
+			-moz-transform: translateX(-50%) translateY(-50%);
+			-o-transform: translateX(-50%) translateY(-50%);
+			-ms-transform: translateX(-50%) translateY(-50%);
+			transform: translateX(-50%) translateY(-50%);
+				-webkit-transition-property:color;
+    -webkit-transition-duration: 2s;
+    -webkit-transition-timing-function: ease;
+		}
+		
+		
+		
