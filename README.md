@@ -8,7 +8,9 @@ Dome site: https://0123cf.github.io/www/
  在线连接：<br />
  <xmp>
   <link rel="stylesheet" href="https://0123cf.github.io/www/xxy.css">
-  <script src="https://0123cf.github.io/www/xxy.js"></script>
+  </xmp>
+  <br />
+  <xmp><script src="https://0123cf.github.io/www/xxy.js"></script>
   </xmp>
 </p>
 <br />
