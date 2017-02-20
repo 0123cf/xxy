@@ -16,29 +16,45 @@ window.onresize = function() {
 /**
  * 禁止微信露底
  * author:谢秀岳
- * DOTO 下拉后回拉未处理 
  */
 !function(){
-	if(navigator.userAgent.indexOf('iPhone')!=-1){
-		return false;
+	document.documentElement.ontouchmove = function (e) {
+	e.preventDefault();
+	};
+	var startX = 0, startY = 0,startTop=0;
+	var initTop=document.body.getBoundingClientRect().top;
+	var initHeight=document.body.getBoundingClientRect().height;
+	//touchstart事件  
+	function touchSatrtFunc(evt) {
+	try{
+	var touch = evt.touches[0]; //获取第一个触点  
+	var x = Number(touch.pageX); //页面触点X坐标  
+	var y = Number(touch.pageY); //页面触点Y坐标  
+	var top=document.body.getBoundingClientRect().top;//原来的值
+	//记录触点初始位置  
+	startX = x;
+	startY = y;
+		startTop=top;
+	} catch (e) {
+	console.log('touchSatrtFunc：' + e.message);
 	}
-	var y0;
-//	var a=[];
-	document.documentElement.addEventListener('touchstart',function(ev){
-		var rect_=this.getBoundingClientRect(); 
-//		a=[];//初始化
-		if(rect_.top>=0){
-			y0=ev.changedTouches[0].clientY;
-		}else{
-			y0=undefined;
-		}
+	}
+	document.body.addEventListener('touchstart', touchSatrtFunc, false);
+	document.body.style.position='fixed';
+	document.body.addEventListener('touchmove',function(e){
+	var y=e.targetTouches[0].clientY,//获取的y轴
+		gap=y>startY?y-startY:startY-y;
+	var addNumber;
+	var getTop=document.body.getBoundingClientRect().top;
+	if(y>startY){//下
+		addNumber=startTop+gap;
+		if(addNumber>=initTop)return false;
+	}else{
+		addNumber=startTop-gap;
+		if(~getTop>=initHeight-(window.screen.availHeight-100))return false;
+	}
+	this.style.top=addNumber+'px';
 	});
-	document.documentElement.addEventListener('touchmove',function(ev){ 
-		var y1=ev.changedTouches[0].clientY;
-		if(y1>y0){
-			ev.preventDefault();
-		}	
-	}); 
 }();
 
 
