@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1, user-scalable=no">
+	</head>
+	<style>
+		html,body{
+			height: 100%!important;
+			padding:0;margin:0;
+		}
+		iframe{
+			border-width: 0px!important;
+			width: 100%!important;
+			height: 100%!important;
+			min-width: 300px;
+			min-height: 600px;
+		}
+		
+		a:link { text-decoration: none !important;}
+		a:active { text-decoration:none !important;}
+		a:hover { text-decoration:none !important;}
+		a:visited { text-decoration: none!important;}
+		nav{
+			border-width: 0;
+			width: 100%;
+			position: fixed;
+			bottom: 0;left: 0;
+			height: 45px;
+			overflow: hidden;
+			background: #000;
+			padding: .3em 0;
+		}
+		nav>ul{
+			display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+			display: -moz-box; /* 老版本语法: Firefox (buggy) */
+			display: -ms-flexbox; /* 混合版本语法: IE 10 */
+			display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+			display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+			direction:row;
+			-webkit-direction:row;
+			text-align:center;
+			margin:0;
+			padding:0;
+		}
+		nav a{
+			color: #fff;
+			width: 100%;
+			text-align: center;
+			height: 40px;
+		}
+		nav a:nth-child(1){
+			color: #FEBB2C;
+		}
+	</style>
+	<body>
+		<iframe src="http://mysy.vip"></iframe>
+		<nav class="nav">
+		    <ul id="list">
+	            <a href="#http://mysy.vip#0">
+	                <i class="iconfont icon-shouyeshouye"></i>
+	                <p>首页</p>
+	            </a>
+	            <a href="#http://baidu.com#1">
+	                 <i class="iconfont icon-chicang"></i>
+	                <p>tab</p>
+	            </a>
+	            <a href="#http://soso.com#2">
+	                 <i class="iconfont icon-wode"></i>
+	                <p class="active">我的</p>
+	            </a>
+		    </ul>
+		</nav>
+	</body>
+	<script src="https://0123cf.github.io/www/click.js"></script>
+	<script>
+		if ('addEventListener' in document) {
+			    document.addEventListener('DOMContentLoaded', function() {
+			        FastClick.attach(document.body);
+			    }, false);
+			}
+		var iframe=document.querySelector('iframe'),
+			aBak,
+			hrefArray=window.location.href.split('#');
+		if(window.location.href.indexOf('#')==-1){
+			//初始化赋值
+			hrefArray[1]='http://mysy.vip';
+			hrefArray[2]='0';
+		}
+		iframe.src=unescape(hrefArray[1]);
+		//为离开元素这是状态
+		document.querySelector('#list').children[0].style.color='#fff';
+		//为当前选中box设置
+		document.querySelector('#list').children[hrefArray[2]].style.color='#FEBB2C';
+		document.body.addEventListener("click",function(event){
+			var e=event.target;
+			/*
+			*递归获取是否点击到了A链接
+			*box为点击到的box
+			*/
+			!function qipao(box){
+				if(box.tagName=='A'){
+					if(aBak==box){
+						/*
+						*点击相同的tab直接返回
+						*tips:取消返回页面可刷新
+						*/
+						return false;
+					}
+					var src=unescape(box.getAttribute('href').split('#')[1]),
+						aBak_e=true;
+					iframe.src=src;
+					//选中状态
+					box.style.color='#FEBB2C';
+					try{
+						aBak.innerHTML;
+					}catch(e){
+						if(hrefArray[1]!=box.href.split('#')[1]){
+							//页面首次加载第一次转跳其他页面的box
+							var outbox=box.parentNode.children[hrefArray[2]];
+							outbox.style.color='#fff';
+						}
+						aBak_e=false;
+					}
+					if(aBak_e&&box!=aBak){
+						//aBak为离开元素
+						aBak.style.color='#fff';	
+					}
+					aBak=box;
+				} else{
+					if(!box||box.tagName=='BODY'){
+						return false;
+					}else{
+						var boxParendNode=box.parentNode;
+						qipao(boxParendNode);
+					}
+				}
+			}(e);
+		});
+	</script>
+</html>
