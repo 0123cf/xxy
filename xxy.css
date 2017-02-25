@@ -7,26 +7,31 @@
 			z-index: 99;
 			width: 100%;
 			height: 100%;
-			background: rgba(0,0,0,.7);
 			position: fixed;
 			top: 0;
 			left: 0;
 			z-index: 99999999;
 			font-size:14px;
-			overflow:scroll;
+			overflow:hidden;
+			background:rgba(0,0,0,.5)
 		}
 		#xxy-addDom .xxy-popup-box .inner{
 			width: 80%;
-			max-width:400px;
+			height:0px;
+			max-width:280px;
 			background: #fff;
 			position: absolute;
-			top:50%;left:50%;
+			top:0%;left:0%;right:0%;bottom:0%;
+			margin:auto;
 			color:#646464;
-			-webkit-transform: translateX(-50%) translateY(-50%);
-			-moz-transform: translateX(-50%) translateY(-50%);
-			-ms-transform: translateX(-50%) translateY(-50%);
-			transform: translateX(-50%) translateY(-50%);
-			/* position:fixed;top:50px; bottom:50px;overflow:scroll; */
+		}
+		#xxy-addDom .xxy-popup-box .inner .inner_box{
+			background:#fff;
+			border:0.01px solid #adadad;
+			-webkit-transform: translateY(-50%);
+			-moz-transform:  translateY(-50%);
+			-ms-transform: translateY(-50%);
+			transform:  translateY(-50%);
 		}
 		#xxy-addDom .xxy-popup-box .xxy-popup-title{
 			width: 100%;
@@ -39,7 +44,7 @@
 		    background-color: #eee;
 		}
 		#xxy-addDom .xxy-popup-box .print{
-			padding:1.1em 1.5rem 0rem 1.5em;
+			padding:15px 20px 0px 20px;
 		}
 		#xxy-addDom .xxy-popup-box .or{width:90%;margin:0 auto;}
 		#xxy-addDom .xxy-popup-box button{
