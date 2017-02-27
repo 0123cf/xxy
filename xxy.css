@@ -2,7 +2,6 @@
 *xxy弹窗样式
 *邮箱:abx_xf@126.com
 */
-
 		#xxy-addDom .xxy-popup-box {
 			z-index: 99;
 			width: 100%;
@@ -45,6 +44,8 @@
 		}
 		#xxy-addDom .xxy-popup-box .print{
 			padding:15px 20px 0px 20px;
+			max-height: 500px;
+			overflow:auto;
 		}
 		#xxy-addDom .xxy-popup-box .or{width:90%;margin:0 auto;}
 		#xxy-addDom .xxy-popup-box button{
@@ -68,7 +69,7 @@
 			margin-right: .4em;
 		}
 		
-		/*下单信息样式*/
+		/*筝���篆≧���桁��*/
 		#xxy-addDom .print_inner p span:nth-child(1){
 			text-align:right;
 		}
