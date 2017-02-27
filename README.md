@@ -30,7 +30,8 @@ Dome site: https://0123cf.github.io/www/
  History record：<br />
  <ol> 
    <li>兼容了iframe在苹果的出现fiexd问题。</li>
-   <li>增加移动端的支持（包括ie8）[ie8里面的回调依然可用，关闭了自动提示]</li>
+   <li>增加移动端的支持（包括ie8）[ie8里面的回调依然可用]</li>
+   <li>设置内容最高值，接触冒泡，超出可滑动滚动。</li>
  </ol>
  <br />
  <p>Tips:</p>
