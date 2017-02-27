@@ -1,9 +1,6 @@
 
 
-if(document.addEventListener) {
-document.addEventListener('DOMContentLoaded', function() {
-document.removeEventListener('DOMContentLoaded',arguments.callee, false);
-       
+
 !function(){
 	function id(a){return window.parent.document.getElementById(a);}
 	if(!Boolean(id('xxy-addDom'))){
@@ -180,7 +177,6 @@ document.removeEventListener('DOMContentLoaded',arguments.callee, false);
 	
 }();
 
- }, false);
 	
 //	xxy.popup('xx')
 //	xxy.popup('xx','oo');
