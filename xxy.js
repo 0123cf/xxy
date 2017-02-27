@@ -1,7 +1,6 @@
 
-
-
 !function(){
+	console.log('s')
 	function id(a){return window.parent.document.getElementById(a);}
 	if(!Boolean(id('xxy-addDom'))){
 		try{
@@ -19,7 +18,7 @@
 	window.xxy={
 		s:function(e){
 			e.preventDefault();
-		},
+		}, 
 		/**
 		 * 
 		 * @param {Object} a 提示文字
@@ -95,7 +94,7 @@
 									'<div class="xxy-popup-title"> <i class="iconfont icon-tishi"></i> ',title,
 										'<i id="xxy-popup-off" class="off icon iconfont icon-cha" id="cash-off"></i>',
 									'</div>',
-									'<div class="print">',inner,'</div>',
+									'<div id="xxy_popup_inner_print" class="print">',inner,'</div>',
 								'</div>',
 								'<div class="or">',
 									'<button class="xxy-popup-done" id="xxy-popup-done">',deon_text,'</button>',
@@ -106,9 +105,12 @@
 					'</div>'
 				].join('');
 			//document.body.innerHTML+=c; 直接插入body会导致body dom重新生成，虽然是那个div，但是dom对象已经变了，会导致body下所有的dom事件消失
-			id('xxy-addDom').innerHTML+=c;
+			id('xxy-addDom').innerHTML+=c;			
+			document.getElementById('xxy_popup_inner_print').ontouchmove=function(e){
+				e.stopPropagation();
+			};
 			try{
-				window.parent.document.body.addEventListener('touchmove',xxy.s,false);
+				window.parent.document.body.addEventListener('touchmove',xxy.s,false);	
 			}catch(e){
 				function iexx(){
 					var child=id('xxy-popup-box');
@@ -174,10 +176,8 @@
 			},time);
 		}
 	};
-	
 }();
 
-	
 //	xxy.popup('xx')
 //	xxy.popup('xx','oo');
 //	xxy.popup('xx','oo','1','2');
