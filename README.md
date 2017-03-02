@@ -19,6 +19,9 @@ Dome site: https://0123cf.github.io/www/
  <br />&nbsp;  //e==0 点击了左按钮，e==1 点击右按钮
 <br /> &nbsp;  //回调了可以继续调用自身。
 <br /> });
+<h3>xxy.alert:</h3>	xxy.alert('22',function(){
+		<br /> &nbsp;		 回调	
+});
 <br />
 <br /> &nbsp; <span style="color:rgb(200,30,0)">tips:</span>
 <p>支持不添加回调不添加标题文字，但是左按钮与右按钮必须成对出现</p>
@@ -32,6 +35,7 @@ Dome site: https://0123cf.github.io/www/
    <li>兼容了iframe在苹果的出现fiexd问题。</li>
    <li>增加移动端的支持（包括ie8）[ie8里面的回调依然可用]</li>
    <li>设置内容最高值，接触冒泡，超出可滑动滚动。</li>
+   <li>添加alert函数</li>
  </ol>
  <br />
  <p>Tips:</p>
