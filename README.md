@@ -19,12 +19,14 @@ Dome site: https://0123cf.github.io/www/
  <br />&nbsp;  //e==0 点击了左按钮，e==1 点击右按钮
 <br /> &nbsp;  //回调了可以继续调用自身。
 <br /> });
-<h3>xxy.alert:</h3>	xxy.alert('22',function(){
-		<br /> &nbsp;		 回调	
-});
-<br />
 <br /> &nbsp; <span style="color:rgb(200,30,0)">tips:</span>
 <p>支持不添加回调不添加标题文字，但是左按钮与右按钮必须成对出现</p>
+<br />
+
+<h3>xxy.alert:</h3>	xxy.alert('22',function(){
+<br /> &nbsp;		 回调	
+<br />});
+<br />
 <h3>xxy.toast:</h3>&nbsp;xxy.toast('内容','消失时间[ms]');
 
 
