@@ -155,6 +155,38 @@
 			//	//('，，，蛋疼的苹果会给fiexd的高度设置为父级窗口。');
 			//}
 		},
+		alert:function(a,b,f){
+			var callBack=false;
+			for(var i=0;i<arguments.length;i++){
+				if(typeof a[i]=='function'){
+					callBack=true;
+				}
+			}
+			try{
+				console.log(b.length)
+				if(callBack){
+					xxy.popup(a,b,f);
+				}else{
+					xxy.popup(a,b);
+				}
+			}catch(e){
+				if(callBack){
+					xxy.popup(a,f);
+				}else{
+					xxy.popup(a);
+				}
+			}
+			var button_=window.parent.document.querySelector('#xxy-addDom #xxy-popup-cancal'),
+				button_child2=window.parent.document.querySelector('#xxy-addDom .xxy-popup-box button:nth-child(1)');
+				off_=id('xxy-popup-off').style.display='none';
+				button_.style.width='100%';
+				button_.innerHTML='确认';
+				button_.style.marginLeft='auto';
+				button_.style.marginRight='auto';
+				button_.style.display='block';
+				button_child2.style.display='none';
+			//tips:不用当心下次影响popup  当元素Dom关闭后，对应的属性自然会删除。只有css才是永远的渲染。
+		},
 		toast:function(a,b){
 			var time=(arguments[1]?b:2500)+1000;
 			var c=[
