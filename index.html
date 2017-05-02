@@ -7,7 +7,7 @@
   <title>js-xxy-popup Dome</title>
   <link rel="stylesheet" href="xxy.css">
 </head>
-<body style="height:2000px;width:1200px;">
+<body style="height:2000px;width:1200px;font-size:16px;">
   <span>xxy.popup</span><button  onclick="popup()">选择弹窗</button><br />
   <span>xxy.alert</span><button onclick="alertk()">确认弹窗</button><br />
   <span>xxy.toast</span><button onclick="toast()">自动消失提示</button><br />
@@ -40,7 +40,7 @@
 		xxy.popup(
 			'未绑定手机号',
 			//'<p>手机号：</p>'+
-			'<input type="password" style="margin:.5em 0;padding: .2em;border-width:0px;border:1px solid #ddd;width:100%;" onchange="xxy.v1= this.value" />'+
+			'<input type="password" style="margin:.5em 0;padding: .2em;border-width:0px;border:1px solid #ddd; box-sizing: border-box;width:100%;" onchange="xxy.v1= this.value" />'+
 			'<span style="color:#880707">'+tips+'</span>',
 			'绑定',
 			'取消',
