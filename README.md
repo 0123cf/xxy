@@ -48,7 +48,7 @@ Dome site: https://0123cf.github.io/www/
  <p>然后这时候很多人喜欢修改dom关闭的时间，这样的话虽然可以实现，但是需要验证的时候就非常麻烦，代码变得很复杂。</p>
  <p>我推荐一个写法：给input或者textbox等标签添加change，列如：</p>
  <p>
-  xxy.alert('<input onchange="xxy.v1= this.value" />',function(){
+  xxy.alert(\'\<input onchange=\"xxy.v1= this.value\" \/\>\',function(){
   <br />   console.log(xxy.v1)
   <br />});
  </p>
