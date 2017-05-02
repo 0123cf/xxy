@@ -43,4 +43,13 @@ Dome site: https://0123cf.github.io/www/
  <p>Tips:</p>
  <br />有时候我们自己封装，或者别的弹窗插件，在使用后发现有后遗症，当弹窗消失的时候，除了委托事件等特殊事件，onclick都不能用了。
  <br />xxy.js完美解决了这个问题。
+ <br /> 关于获取弹窗的值问题：
+ <p>由于点确认后就关闭了整个dom层，所以这时候无法通过dom去获取值。</p>
+ <p>然后这时候很多人喜欢修改dom关闭的时间，这样的话虽然可以实现，但是需要验证的时候就非常麻烦，代码变得很复杂。</p>
+ <p>我推荐一个写法：给input或者textbox等标签添加change，列如：</p>
+ <p>
+  xxy.alert('<input onchange="xxy.v1= this.value" />',function(){
+  <br />   console.log(xxy.v1)
+  <br />});
+ </p>
 </div>
