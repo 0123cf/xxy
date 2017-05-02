@@ -10,7 +10,9 @@
 <body style="height:2000px;width:1200px;">
   <span>xxy.popup</span><button  onclick="popup()">选择弹窗</button><br />
   <span>xxy.alert</span><button onclick="alertk()">确认弹窗</button><br />
-  <span>xxy.toast</span><button onclick="toast()">自动消失提示</button>
+  <span>xxy.toast</span><button onclick="toast()">自动消失提示</button><br />
+	<p>例子：</p>
+  <button onclick="testphone()">手机号验证</button><br />
 </body>
 <script src="xxy.js"></script>
 <script>
@@ -30,6 +32,38 @@
 	}
 	function toast(){
 		xxy.toast('您好，我是阿拉丁神灯');
+	}
+	
+	
+	function testphone(tips){
+		var tips= tips?tips:'';
+		xxy.popup(
+			'未绑定手机号',
+			//'<p>手机号：</p>'+
+			'<input type="password" style="margin:.5em 0;padding: .2em;border-width:0px;border:1px solid #ddd;width:100%;" onchange="xxy.v1= this.value" />'+
+			'<span style="color:#880707">'+tips+'</span>',
+			'绑定',
+			'取消',
+			function(e){
+				if(e==0){
+					if(!xxy.v1){
+						testphone("未输入手机号！");
+						return false;
+					}
+					if(xxy.v1.length<=1){
+						testphone("未输入手机号！");
+						return false;
+					}
+					if(!(/^1[3458]\d{9}$/.test(xxy.v1))){ 
+						testphone("手机号码有误，请重填");
+						return false;
+					}
+					xxy.toast('验证成功');
+				}else{
+					xxy.toast('以取消');
+				}
+			}
+		);
 	}
 </script>
 </html>
