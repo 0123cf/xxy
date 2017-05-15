@@ -2,6 +2,7 @@
 *xxy弹窗样式
 *邮箱:abx_xf@126.com
 */
+		
 		#xxy-addDom .xxy-popup-box {
 			z-index: 99;
 			width: 100%;
@@ -69,7 +70,7 @@
 			margin-right: .4em;
 		}
 		
-		/*筝���篆≧���桁��*/
+
 		#xxy-addDom .print_inner p span:nth-child(1){
 			text-align:right;
 		}
@@ -105,5 +106,40 @@
     -webkit-transition-timing-function: ease;
 		}
 		
-		
+		.xxy-down-viewbox{
+			overflow: hidden;
+			position: relative;
+			min-height: 200px;
+			min-width: 200px;
+			margin: auto;
+			box-shadow: 2px 2px 10px 1px rgba(0,0,0,.2);
+			-webkit-transform: translate3d(0, 0, 0);
+			-moz-transform: translate3d(0, 0, 0);
+			-ms-transform: translate3d(0, 0, 0);
+			transform: translate3d(0, 0, 0);
+			-webkit-backface-visibility: hidden;
+			-moz-backface-visibility: hidden;
+			-ms-backface-visibility: hidden;
+			backface-visibility: hidden;
+			-webkit-perspective: 1000;
+			-moz-perspective: 1000;
+			-ms-perspective: 1000;
+			perspective: 1000;
+		}
+		.xxy-down-viewbox>div{
+			height: 100%;
+			width: 100%;
+			overflow: auto;
+			border: 0px solid rgba(0,0,0,0);
+			background: #eee;
+		}
+		.xxy-down-viewbox>div:before{
+			content: attr(data-befor);
+			position: absolute;
+			top: 0px;
+			color: #646464;
+			width: 100%;
+			text-align: center;
+		}
+		.xxy-down-viewbox>div>*{background: #fff;position: relative;z-index: 1;}
 		
