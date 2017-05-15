@@ -155,7 +155,7 @@
 			//	//('，，，蛋疼的苹果会给fiexd的高度设置为父级窗口。');
 			//}
 		},
-		alert:function(a,b,f){
+		alert: function(a,b,f){
 			var callBack=false;
 			for(var i=0;i<arguments.length;i++){
 				if(typeof a[i]=='function'){
@@ -187,7 +187,7 @@
 				button_child2.style.display='none';
 			//tips:不用当心下次影响popup  当元素Dom关闭后，对应的属性自然会删除。只有css才是永远的渲染。
 		},
-		toast:function(a,b){
+		toast: function(a,b){
 			var time=(arguments[1]?b:2500)+1000;
 			var c=[
 				'<div id="xxy-toast" class="xxy-toast">',a,'</div>'
@@ -206,6 +206,66 @@
 				var child=id('xxy-toast');
 				child.parentNode.removeChild(child);
 			},time);
+		},
+		XxyDown: function(){
+			var	start= "touchstart",
+				move= "touchmove",
+				end= "touchend";
+			function c(toData){
+				var view= toData.dom.children[0],
+				inner= view.children[0];
+				view.setAttribute('data-befor','下拉刷新');
+				inner.addEventListener(start,function(e){
+					var touch= e.touche||e.touches[0],
+						top= view.scrollTop;
+					this.startTop= top;
+					this.startSite={
+						y: touch.pageY
+					}
+					view.style.transitionDuration= '0ms';
+				});
+				inner.addEventListener(move,function(e){
+					var touch= e.touche||e.touches[0],
+						top= view.scrollTop,
+						moveY= touch.clientY,//获取当前的y轴
+						startY= this.startSite.y;
+					//下拉
+					if(moveY>startY){
+						if(top==0){
+							var startTop= this.startTop,
+								gap= moveY>startY? moveY-startY: startY-moveY,
+								topGap= gap- this.startTop;
+							view.style.borderTopWidth= topGap+'px';
+							this.direction= 'down';
+						}else{
+							this.direction= 'up';
+						}
+					}
+				});
+				inner.addEventListener(end,function(e){
+					if(this.direction){
+						var direction= this.direction;
+						view.style.transitionDuration= '500ms';
+						if(direction=='down'){
+							view.style.borderTopWidth= '2em';
+							view.setAttribute('data-befor','正在刷新...');
+							toData.befor();
+						}else if(direction=='up'){
+							// DOTO 上拉加载
+						}
+					}
+				});
+			}
+			return {
+				cc: function(dom){
+					dom.forEach(c);
+				},
+				downLoad: function(e){
+					var box= e.dom.children[0];
+					box.style.borderTopWidth= '0px';
+					box.setAttribute('data-befor','下拉刷新');
+				}
+			};
 		}
 	};
 }();
@@ -216,3 +276,15 @@
 //	xxy.popup('oo000',function(e){
 //		console.log(e)
 //	});
+//	var test= new xxy.XxyDown();
+//	 test.cc([
+//		{
+//			dom: document.querySelector('#down-viewbox'),
+//			befor: function(){
+//				window.setTimeout(function(){
+//					xx.downLoad(this);
+//				}.bind(this),1000);
+//			}
+//		}
+//	]);
+
