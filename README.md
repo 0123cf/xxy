@@ -28,7 +28,13 @@ Dome site: https://0123cf.github.io/www/
 <br />});
 <br />
 <h3>xxy.toast:</h3>&nbsp;xxy.toast('内容','消失时间[ms]');
-
+<h3>new xxy.XxyDown()</h3>
+<p>test.cc([</p>
+  <p>{</p>
+   dom: Dom,
+   befor: 回调
+  <p>}</p>
+<p>]);</p>
 
 <HR />
 <div>
@@ -38,6 +44,7 @@ Dome site: https://0123cf.github.io/www/
    <li>增加移动端的支持（包括ie8）[ie8里面的回调依然可用]</li>
    <li>设置内容最高值，接触冒泡，超出可滑动滚动。</li>
    <li>添加alert函数</li>
+   <li>添加下拉刷新，用法看dome</li>
  </ol>
  <br />
  <p>Tips:</p>
