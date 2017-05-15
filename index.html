@@ -13,6 +13,13 @@
   <span>xxy.toast</span><button onclick="toast()">自动消失提示</button><br />
 	<p>例子：</p>
   <button onclick="testphone()">手机号验证</button><br />
+	<br /><br />
+	
+	<div id="down-viewbox" class="xxy-down-viewbox">
+		<div class="view">
+			<ul style="height:500px">喵喵喵</ul>
+		</div>
+	</div>
 </body>
 <script src="xxy.js"></script>
 <script>
@@ -65,5 +72,19 @@
 			}
 		);
 	}
+	
+	
+	
+	var test= new xxy.XxyDown();
+	 test.cc([
+		{
+			dom: document.querySelector('#down-viewbox'),
+			befor: function(){
+				window.setTimeout(function(){
+					xx.downLoad(this);
+				}.bind(this),1000);
+			}
+		}
+	]);
 </script>
 </html>
