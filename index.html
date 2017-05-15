@@ -15,7 +15,7 @@
   <button onclick="testphone()">手机号验证</button><br />
 	<br /><br />
 	
-	<div id="down-viewbox" class="xxy-down-viewbox">
+	<div style="width:300px" id="down-viewbox" class="xxy-down-viewbox">
 		<div class="view">
 			<ul style="height:500px">喵喵喵</ul>
 		</div>
@@ -81,8 +81,8 @@
 			dom: document.querySelector('#down-viewbox'),
 			befor: function(){
 				window.setTimeout(function(){
-					xx.downLoad(this);
-				}.bind(this),1000);
+					test.downLoad(this);
+				}.bind(this),500);
 			}
 		}
 	]);
