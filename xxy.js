@@ -136,10 +136,8 @@
 					done='xxy-popup-done',
 					cancal='xxy-popup-cancal';
 				if(e.id==done||e.id==cancal||e.id=='xxy-popup-off'){
-					window.setTimeout(function(){
-						var child=id('xxy-popup-box');
-						child.parentNode.removeChild(child);
-					},1);
+					var child=id('xxy-popup-box');
+					child.parentNode.removeChild(child);
 					window.parent.document.body.removeEventListener('touchmove',xxy.s,false);
 					document.documentElement.style.overflow='initial';
 					document.body.style.overflow='initial';
@@ -151,11 +149,8 @@
 						}
 					}
 			};
-			//if(window.navigator.userAgent.indexOf('iPhone')!=-1){
-			//	//('，，，蛋疼的苹果会给fiexd的高度设置为父级窗口。');
-			//}
 		},
-		alert:function(a,b,f){
+		alert: function(a,b,f){
 			var callBack=false;
 			for(var i=0;i<arguments.length;i++){
 				if(typeof a[i]=='function'){
@@ -187,7 +182,7 @@
 				button_child2.style.display='none';
 			//tips:不用当心下次影响popup  当元素Dom关闭后，对应的属性自然会删除。只有css才是永远的渲染。
 		},
-		toast:function(a,b){
+		toast: function(a,b){
 			var time=(arguments[1]?b:2500)+1000;
 			var c=[
 				'<div id="xxy-toast" class="xxy-toast">',a,'</div>'
