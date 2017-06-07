@@ -1,6 +1,4 @@
-
 !function(){
-	console.log('s')
 	function id(a){return window.parent.document.getElementById(a);}
 	if(!Boolean(id('xxy-addDom'))){
 		try{
@@ -56,7 +54,7 @@
 						inner=cs[1];
 					}
 					if(cs.length==3){
-						colole.error('参数错误！--xxy');
+						console.error('参数错误！--xxy');
 					}
 					if(cs.length==4){
 						title=cs[0];
@@ -120,7 +118,7 @@
 					}catch(e){
 						//手机没有ie所以不用处理
 					}
-					document.documentElement.style.overflow='auto';
+					document.documentElement.style.overflow='initial';
 				}
 				/*兼容ie*/
 				id('xxy-popup-done').onclick=function(){
@@ -138,11 +136,13 @@
 					done='xxy-popup-done',
 					cancal='xxy-popup-cancal';
 				if(e.id==done||e.id==cancal||e.id=='xxy-popup-off'){
-					var child=id('xxy-popup-box');
-					child.parentNode.removeChild(child);
+					window.setTimeout(function(){
+						var child=id('xxy-popup-box');
+						child.parentNode.removeChild(child);
+					},1);
 					window.parent.document.body.removeEventListener('touchmove',xxy.s,false);
-					document.documentElement.style.overflow='auto';
-					document.body.style.overflow='auto';
+					document.documentElement.style.overflow='initial';
+					document.body.style.overflow='initial';
 					if(e.id==done){
 							callback(cs,0);			
 						}
@@ -155,7 +155,7 @@
 			//	//('，，，蛋疼的苹果会给fiexd的高度设置为父级窗口。');
 			//}
 		},
-		alert: function(a,b,f){
+		alert:function(a,b,f){
 			var callBack=false;
 			for(var i=0;i<arguments.length;i++){
 				if(typeof a[i]=='function'){
@@ -187,7 +187,7 @@
 				button_child2.style.display='none';
 			//tips:不用当心下次影响popup  当元素Dom关闭后，对应的属性自然会删除。只有css才是永远的渲染。
 		},
-		toast: function(a,b){
+		toast:function(a,b){
 			var time=(arguments[1]?b:2500)+1000;
 			var c=[
 				'<div id="xxy-toast" class="xxy-toast">',a,'</div>'
@@ -207,67 +207,128 @@
 				child.parentNode.removeChild(child);
 			},time);
 		},
-		XxyDown: function(){
-			var	start= "touchstart",
-				move= "touchmove",
-				end= "touchend";
-			function c(toData){
-				var view= toData.dom.children[0],
-				inner= view.children[0];
-				view.setAttribute('data-befor','下拉刷新');
+		touch: function xxyDown(){
+			var global= {};
+			xxyDown.bind(global);
+			var	start=  "touchstart",
+				move=  "touchmove",
+				end=  "touchend";
+			function core(box,config){
+				var view = box.querySelector('.view'),
+					inner = box.querySelector('.inner'),
+					innerHeight = parseInt(window.getComputedStyle(box).height);
 				inner.addEventListener(start,function(e){
-					var touch= e.touche||e.touches[0],
-						top= view.scrollTop;
-					this.startTop= top;
-					this.startSite={
-						y: touch.pageY
-					}
-					view.style.transitionDuration= '0ms';
-				});
-				inner.addEventListener(move,function(e){
-					var touch= e.touche||e.touches[0],
-						top= view.scrollTop,
-						moveY= touch.clientY,//获取当前的y轴
-						startY= this.startSite.y;
-					//下拉
-					if(moveY>startY){
-						if(top==0){
-							var startTop= this.startTop,
-								gap= moveY>startY? moveY-startY: startY-moveY,
-								topGap= gap- this.startTop;
-							view.style.borderTopWidth= topGap+'px';
-							this.direction= 'down';
-						}else{
-							this.direction= 'up';
+					if(config.body){
+						var body_= box,
+							play_= false;
+						!function qipao(box){
+							if(box.className.indexOf('xxy-down-viewbox')!=-1){
+								if(box!=body_){
+									play_= true;
+								}
+							} else{
+								if(!box||box.tagName=='BODY'){
+									return false;
+								}else{
+									var boxParendNode=box.parentNode;
+									qipao(boxParendNode);
+								}
+							}
+						}(e.target);
+						if(play_){
+							return false;
 						}
 					}
-				});
+					this.style.transitionDuration = '0ms';
+					var touch = e.touche||e.touches[0],
+						top = view.scrollTop,
+						height = window.getComputedStyle(this).height,
+						domHeight = window.parseInt(height);
+					this.startTop = top;
+					this.startSite = {
+						y: touch.pageY
+					};
+					this.domHeight = domHeight;
+				},false);
+				inner.addEventListener(move,function(e){
+					if(config.body){
+						var body_= box,
+							play_= false;
+						!function qipao(box){
+							if(box.className.indexOf('xxy-down-viewbox')!=-1){
+								if(box!=body_){
+									play_= true;
+								}
+							} else{
+								if(!box||box.tagName=='BODY'){
+									return false;
+								}else{
+									var boxParendNode=box.parentNode;
+									qipao(boxParendNode);
+								}
+							}
+						}(e.target);
+						if(play_){
+							return false;
+						}
+					}
+					var touch= e.touche||e.touches[0],
+						top= box.scrollTop,
+						startY= this.startSite.y,
+						moveY= touch.clientY;//获取当前的y轴
+					if(moveY>startY){
+						// 下拉到顶部执行(如下拉未松手上拉，阻止继续执行有精确度问题)
+						if(top<=0){
+							e.preventDefault();
+							if(config.move){
+								this.direction= 'down';
+								var startTop= this.startTop,
+									gap= moveY-startY,
+									topGap= gap- this.startTop;
+								this.style.transform= 'translate3d(0, '+topGap+'px, 0)';
+							}
+						}else{
+							return false;
+						}
+					}else{
+						var boxHeight = config.body ? window.innerHeight : innerHeight;
+						// 上拉到底部执行 (滚动的距离加auto的高度等于ul总高度)
+						if(top+boxHeight+1>=this.domHeight){
+							e.preventDefault();
+							if(config.move){
+								this.direction = 'up';
+								var gap = moveY-startY;
+								this.style.transform = 'translate3d(0, '+gap+'px, 0)';
+							}
+						}else{
+							return false;
+						}
+					}
+				},false);
 				inner.addEventListener(end,function(e){
+					e.stopPropagation();
+	//				this.parentNode.style.overflow= 'auto'
 					if(this.direction){
-						var direction= this.direction;
-						view.style.transitionDuration= '500ms';
+						this.style.transitionDuration = '500ms';
+						var direction = this.direction;
 						if(direction=='down'){
-							view.style.borderTopWidth= '2em';
-							view.setAttribute('data-befor','正在刷新...');
-							toData.befor();
+							
 						}else if(direction=='up'){
 							// DOTO 上拉加载
+							
 						}
+						this.style.transform = 'translate3d(0, 0px, 0)';
+						this.direction = undefined;
 					}
-				});
+				},false);
 			}
 			return {
-				cc: function(dom){
-					dom.forEach(c);
-				},
-				downLoad: function(e){
-					var box= e.dom.children[0];
-					box.style.borderTopWidth= '0px';
-					box.setAttribute('data-befor','下拉刷新');
+				bind: function(dom,obj){
+					core(dom,obj);
 				}
 			};
 		}
-	};
+	}
 }();
 
 //	xxy.popup('xx')
@@ -276,15 +337,3 @@
 //	xxy.popup('oo000',function(e){
 //		console.log(e)
 //	});
-//	var test= new xxy.XxyDown();
-//	 test.cc([
-//		{
-//			dom: document.querySelector('#down-viewbox'),
-//			befor: function(){
-//				window.setTimeout(function(){
-//					xx.downLoad(this);
-//				}.bind(this),1000);
-//			}
-//		}
-//	]);
-
