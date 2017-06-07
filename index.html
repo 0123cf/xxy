@@ -5,7 +5,7 @@
   <meta name="viewport" content=" initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
   <meta name = "format-detection" content = "telephone=no">
   <title>js-xxy-popup Dome</title>
-  <link rel="stylesheet" href="xxy.css">
+  <link rel="stylesheet" href="styles/xxy.css">
   <style>
 	  *{margin: 0;padding: 0;-webkit-user-select: none; user-select: none;}
   </style>
@@ -18,16 +18,18 @@
   <button onclick="testphone()">手机号验证</button><br />
 	<br /><br />
 	
-	<div style="width:300px" id="down-viewbox" class="xxy-down-viewbox">
+	<div id="comlist" class="xxy-down-viewbox comlist">
 		<div class="view">
-			<ul style="height:500px">
-				<div>喵喵喵</div>
-				<div>暂时只适配手机端</div>
-			</ul>
+			<div class="inner">
+				<ul style="height:500px">
+					<div>喵喵喵</div>
+					<div>上下拉暂时只适配手机端</div>
+				</ul>
+			</div>
 		</div>
 	</div>
 </body>
-<script src="xxy.js"></script>
+<script src="javascripts/xxy.js"></script>
 <script>
 	function popup(){
 		xxy.popup('githubDome','您觉得xxy弹窗做的如何？','好','不好',function(e){
@@ -53,7 +55,7 @@
 		xxy.popup(
 			'未绑定手机号',
 			//'<p>手机号：</p>'+
-			'<input type="password" style="margin:.5em 0;padding: .2em;border-width:0px;border:1px solid #ddd; box-sizing: border-box;width:100%;" onchange="xxy.v1= this.value" />'+
+			'<input style="margin:.5em 0;padding: .2em;border-width:0px;border:1px solid #ddd; box-sizing: border-box;width:100%;" onchange="xxy.v1= this.value" />'+
 			'<span style="color:#880707">'+tips+'</span>',
 			'绑定',
 			'取消',
@@ -81,16 +83,12 @@
 	
 	
 	
-	var test= new xxy.XxyDown();
-	 test.cc([
-		{
-			dom: document.querySelector('#down-viewbox'),
-			befor: function(){
-				window.setTimeout(function(){
-					test.downLoad(this);
-				}.bind(this),500);
-			}
+	var test= new xxy.touch();
+	test.bind(document.querySelector('#comlist'),{
+		move: true,
+		reload: function(){
+			
 		}
-	]);
+	});	
 </script>
 </html>
