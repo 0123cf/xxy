@@ -8,20 +8,108 @@
   <link rel="stylesheet" href="xxy.css">
   <style>
 	  *{margin: 0;padding: 0;-webkit-user-select: none; user-select: none;}
+	  
+	  body{
+	  	height:2000px;
+	  	font-size:16px;
+	  }
+	  
+	  .module {
+	    background-color: #f7f7f7;
+	    padding: 20px;
+	    margin-bottom: 20px;
+		}
+		.main-content :first-child {
+	    margin-top: 0;
+		}
+		button, .upbtn {
+	    position: relative;
+	    overflow: visible;
+	    display: inline-block;
+	    padding: 0.5em 1em;
+	    border: 1px solid #d4d4d4;
+	    margin: 0;
+	    text-decoration: none;
+	    text-align: center;
+	    text-shadow: 1px 1px 0 #fff;
+	    font: 11px/normal sans-serif;
+	    color: #333;
+	    white-space: nowrap;
+	    cursor: pointer;
+	    outline: none;
+	    background-color: #ececec;
+	    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
+	    background-image: -moz-linear-gradient(#f4f4f4, #ececec);
+	    background-image: -ms-linear-gradient(#f4f4f4, #ececec);
+	    background-image: -o-linear-gradient(#f4f4f4, #ececec);
+	    background-image: linear-gradient(#f4f4f4, #ececec);
+	    -moz-background-clip: padding;
+	    background-clip: padding-box;
+	    border-radius: 0.2em;
+	    zoom: 1;
+		}
+		.module-test-list-title{
+			font-size: 15px;
+		}
+		.module-test-list-inner{
+			font-size: 20px;
+			padding-left: 2em;
+			box-sizing: border-box;
+		}
+
+
+.title {
+    margin-bottom: 10px;
+    font-size: 30px;
+    display: block;
+}
+a {
+    color: #1e6bb8;
+    text-decoration: none;
+}
+	  
+	   #comlist{
+		    height: 300px;
+		    width: 5rem;
+		    display: none;
+		}
+	  .list{
+	  	height:300px;
+	  }
   </style>
 </head>
-<body style="height:2000px;font-size:16px;">
-  <span>xxy.popup</span><button  onclick="popup()">选择弹窗</button><br />
-  <span>xxy.alert</span><button onclick="alertk()">确认弹窗</button><br />
-  <span>xxy.toast</span><button onclick="toast()">自动消失提示</button><br />
-	<p>例子：</p>
-  <button onclick="testphone()">手机号验证</button><br />
-	<br /><br />
+<body>
+	<div class="module">
+        <a target="_Blank" class="title">双选弹窗</a>
+        <button onclick="popup()">popup</button>
+  </div>
+	<div class="module">
+        <a target="_Blank" class="title">确认弹窗</a>
+        <button onclick="alertk()">alert</button>
+  </div>
+	<div class="module">
+        <a target="_Blank" class="title">自动消失提示</a>
+        <button onclick="toast()">toast</button>
+ </div>
+	<div class="module">
+        <a target="_Blank" class="title">
+        	<div class="module-test-list-title">
+        		例子：
+        	</div>
+        	<div class="module-test-list-inner">
+        		<p>手机号验证</p>
+       		  <button onclick="testphone()">start</button>
+        	</div>
+        </a>
+ </div>
+  <br />
+	<br />
+	<br />
 	
 	<div id="comlist" class="xxy-down-viewbox comlist">
-		<div class="view">
+		<div class="view" data-befor = "下拉刷新">
 			<div class="inner">
-				<ul style="height:500px">
+				<ul class="list">
 					<div>上下拉暂时只适配手机端</div>
 				</ul>
 			</div>
@@ -31,7 +119,7 @@
 <script src="xxy.js"></script>
 <script>
 	function popup(){
-		xxy.popup('githubDome','您觉得xxy弹窗做的如何？','好','不好',function(e){
+		xxy.popup('小提示','您觉得xxy弹窗做的如何？','好','不好',function(e){
 			if(e==0){
 			  xxy.toast('谢谢的你支持！');
 			}else{
@@ -40,12 +128,12 @@
 		});
 	}
 	function alertk(){
-		xxy.alert('22',function(){
-			xxy.popup('ss')
+		xxy.alert('这是alert弹窗',function(){
+			xxy.toast('done');
 		});
 	}
 	function toast(){
-		xxy.toast('您好，我是阿拉丁神灯');
+		xxy.toast('正在开启wifi');
 	}
 	
 	
@@ -82,12 +170,13 @@
 	
 	
 	
-	var test= new xxy.touch();
+	/*var test= new xxy.touch();
 	test.bind(document.querySelector('#comlist'),{
 		move: true,
 		reload: function(){
 			
 		}
 	});	
+	*/
 </script>
 </html>
