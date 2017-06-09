@@ -13,6 +13,7 @@
 		console.error('请关闭xxy的全局对象--xxy');
 		return false;
 	}
+	window.parent.document.head.innerHTML += '<style>#xxy-addDom .xxy-popup-box{z-index:99;width:100%;height:100%;position:fixed;top:0;left:0;z-index:99999999;font-size:14px;overflow:hidden;background:rgba(0,0,0,.5)}#xxy-addDom .xxy-popup-box .inner{width:80%;height:0;max-width:280px;background:#fff;position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;color:#646464}#xxy-addDom .xxy-popup-box .inner .inner_box{background:#fff;border:.01px solid #adadad;-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}#xxy-addDom .xxy-popup-box .xxy-popup-title{width:100%;border-bottom:1px solid #E8E8E8;text-align:left;line-height:2.1em;font-size:13px;color:#646464;text-indent:.7em;background-color:#eee}#xxy-addDom .xxy-popup-box .print{padding:15px 20px 0 20px;max-height:250px;overflow:auto}#xxy-addDom .xxy-popup-box .or{width:90%;margin:0 auto}#xxy-addDom .xxy-popup-box button{border-width:0;color:#fff;width:48%;margin:1em 0;padding:.6em 0;border-radius:.4em}#xxy-addDom .xxy-popup-box .xxy-popup-done{background:#FEBB2C}#xxy-addDom .xxy-popup-box .xxy-popup-cancal{background:#eb4b27;margin-left:4%}#xxy-addDom .xxy-popup-box .off{font-size:1.3em;float:right;margin-right:.4em}#xxy-addDom .print_inner p span:nth-child(1){text-align:right}#xxy-addDom .print_inner p span:nth-child(2){text-align:center}#xxy-addDom .print_inner span{display:inline-block;width:48%}#xxy-addDom .print_inner p .important{color:#febb2c}#xxy-addDom .xxy-toast{font-size:15px;color:#fff;position:fixed;bottom:2em;background:rgba(0,0,0,.4);line-height:1.7em;padding:0 1em;border-radius:1em;left:50%;-webkit-transform:translateX(-50%) translateY(-50%);-moz-transform:translateX(-50%) translateY(-50%);-o-transform:translateX(-50%) translateY(-50%);-ms-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);-webkit-transition-property:color;-webkit-transition-duration:2s;-webkit-transition-timing-function:ease}.xxy-down-viewbox{overflow:hidden;position:relative;min-height:200px;min-width:200px;margin:auto;box-shadow:2px 2px 10px 1px rgba(0,0,0,.2);-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000;-moz-perspective:1000;-ms-perspective:1000;perspective:1000}.xxy-down-viewbox>div{height:100%;width:100%;overflow:auto;border:0 solid transparent;background:#eee}.xxy-down-viewbox>div:before{content:attr(data-befor);position:absolute;top:0;color:#646464;width:100%;text-align:center}.xxy-down-viewbox>div>*{background:#fff;position:relative;z-index:1}</style>';
 	window.xxy={
 		s:function(e){
 			e.preventDefault();
@@ -104,7 +105,7 @@
 				].join('');
 			//document.body.innerHTML+=c; 直接插入body会导致body dom重新生成，虽然是那个div，但是dom对象已经变了，会导致body下所有的dom事件消失
 			id('xxy-addDom').innerHTML+=c;			
-			document.getElementById('xxy_popup_inner_print').ontouchmove=function(e){
+			id('xxy_popup_inner_print').ontouchmove=function(e){
 				e.stopPropagation();
 			};
 			try{
