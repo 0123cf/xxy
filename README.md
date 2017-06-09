@@ -3,15 +3,8 @@
 Dome site: https://0123cf.github.io/www/
 <br />
 <p>
- 用法：1,引入xxy.css
- &nbsp;2，引入xxy.js
- 在线连接：<br />
- <xmp>
-  <link rel="stylesheet" href="https://0123cf.github.io/www/xxy.css">
-  </xmp>
-  <br />
-  <xmp><script src="https://0123cf.github.io/www/xxy.js"></script>
-  </xmp>
+ xxy.js在线连接：<br />
+ https://0123cf.github.io/www/xxy.js
 </p>
 <br />
 <h3>xxy.popup:</h3>xxy.popup('标题'，'内容,支持插入标签','左按钮文字','右按钮文字',function(e){
