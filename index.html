@@ -92,51 +92,117 @@ a {
 		}
 	  .list{
 	  	height:600px;
-	    background-image: linear-gradient(to bottom,rgba(0, 255, 20, 0.53) 50%,#fff 50%);
+	    background-image: linear-gradient(to bottom,rgba(0, 255, 20, 0.53) 50%,rgba(0,0,0,0) 50%);
+	    background-image: -webkit-linear-gradient(to bottom,rgba(0, 255, 20, 0.53) 50%,rgba(0,0,0,0) 50%);
 		background-size: 100% 60px;
+		color: #a20;
+		text-align: center;
+		line-height: 4em;
+	  }
+	  
+	  .jscode{
+		padding: 0 1em 0 2em;
+		box-sizing: border-box;
+		word-break:break-all;
+		font-size: 13px;
+	  }
+	  .jscode textarea{
+		width: 100%;
+		height: 8em;
+		line-height: 1em;
+		background: rgba(0,0,0,0);
+		border-width: 0px
+	  }
+	  .jscode ol{
+		line-height: 2em;
 	  }
   </style>
 </head>
 <body>
-	<div class="module">
-        <a target="_Blank" class="title">双选弹窗</a>
-        <button onclick="popup()">popup</button>
-  </div>
-	<div class="module">
-        <a target="_Blank" class="title">确认弹窗</a>
-        <button onclick="alertk()">alert</button>
-  </div>
-	<div class="module">
-        <a target="_Blank" class="title">自动消失提示</a>
-        <button onclick="toast()">toast</button>
- </div>
-	<div class="module">
-        <a target="_Blank" class="title">
-        	<div class="module-test-list-title">
-        		例子：
-        	</div>
-        	<div class="module-test-list-inner">
-        		<p>手机号验证</p>
-       		  <button onclick="testphone()">start</button>
-        	</div>
-        </a>
- </div>
-  <br />
-	<br />
-	<br />
-	<div class="touchs">
-		多指触控
-		<div class="mask"></div>
-	</div>
-	<div id="comlist" class="xxy-down-viewbox comlist">
-		<div class="view" data-befor = "下拉刷新">
-			<div class="inner">
-				<ul class="list">
-				
-				</ul>
+		<div class="module">
+			<a target="_Blank" class="title">双选弹窗</a>
+			<button onclick="popup()">popup</button>
+	    </div>
+		<div class="module">
+			<a target="_Blank" class="title">确认弹窗</a>
+			<button onclick="alertk()">alert</button>
+	    </div>
+		<div class="module">
+			<a target="_Blank" class="title">自动消失提示</a>
+			<button onclick="toast()">toast</button>
+		</div>
+		<div class="module">
+			<a target="_Blank" class="title">
+				<div class="module-test-list-title">
+					例子：
+				</div>
+				<div class="module-test-list-inner">
+					<p>手机号验证</p>
+				  <button onclick="testphone()">start</button>
+				</div>
+			</a>
+	    </div>
+		<br />
+		<br />
+		<br />
+		<div class="touchs">
+			多指触控
+			<div class="mask"></div>
+		</div>
+		
+		<!-- 上下拉例子 start -->
+		<div id="comlist" class="xxy-down-viewbox comlist">
+			<div class="view" data-befor = "下拉刷新">
+				<div class="inner">
+					<!-- 自定义内容 -->
+					<ul class="list">
+						<p>移动端弹性滚动</p>
+						<p>移动端下拉刷新</p>
+						<p>移动端上拉加载</p>
+					</ul>
+					<!-- 自定义内容 -->
+				</div>
 			</div>
 		</div>
+		<!-- 上下拉列子 end -->
+		
+		<br />
+		<div class="module">
+			<h3>Code:</h3>
+			<div class="jscode">
+				<div>
+					<h5>HTML</h5>
+					<textarea>
+<div id="comlist" class="xxy-down-viewbox comlist">
+	<div class="view" data-befor = "下拉刷新">
+		<div class="inner">
+			内容
+		</div>
 	</div>
+</div>
+					</textarea>
+				</div>
+				<div>
+					<h5>Javascript</h5>
+					<ol>
+						<li>var test= new xxy.touch()</li>
+						<li>test.bind(Dom节点,config)</li>
+					</ol>
+				</div>
+				<br />
+				<div>
+					<i>config</i><br />
+					{<br />
+						<p>//默认false 设置true可开启弹性滚动</p>
+						<p>move: true,</p>
+						<p>//上拉回调</p>
+						<p>up: function(){}</p>
+						<p>//下拉回调</p>
+						<p>down: function(){}</p>
+					}<br />
+				</div>
+			</div>
+		</div>
 </body>
 <script src="xxy.js"></script>
 <script>
@@ -194,9 +260,31 @@ a {
 	var test= new xxy.touch();
 	test.bind(document.querySelector('#comlist'),{
 		move: true,
-		reload: function(){
-			
+		up: function(){
+			xxy.toast('加载成功');
+			var box = this.querySelector('.list');
+			var h = window.getComputedStyle(box).height;
+			box.style.height = parseInt(h)+200+'px';
+		},
+		down: function(){
+			var box = this.querySelector('.list');
+			if(this.downCo){
+				box.style.backgroundColor = '#fff'; 
+				this.downCo = false; 
+			}else{
+				box.style.backgroundColor = '#0ff'; 
+				this.downCo = true; 
+			}
+			xxy.toast('刷新成功')
 		}
 	});	
 </script>
 </html>
+
+
+
+
+
+
+
+

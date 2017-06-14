@@ -304,11 +304,10 @@
 						this.style.transitionDuration  =  '500ms';
 						var direction  =  this.direction;
 						if(direction == 'down'){
-							
+							config.down&&config.down.bind(box)();
 						}else if(direction == 'up'){
 							// DOTO 上拉加载
-							
-							console.log('d')
+							config.up&&config.up.bind(box)();
 						}
 						this.style.transform  =  'translate3d(0, 0px, 0)';
 						this.direction  =  undefined;
