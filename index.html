@@ -139,8 +139,7 @@ a {
 	function testphone(tips){
 		var tips= tips?tips:'';
 		xxy.popup(
-			'未绑定手机号',
-			//'<p>手机号：</p>'+
+			'手机号绑定',
 			'<input style="margin:.5em 0;padding: .2em;border-width:0px;border:1px solid #ddd; box-sizing: border-box;width:100%;" onchange="xxy.v1= this.value" />'+
 			'<span style="color:#880707">'+tips+'</span>',
 			'绑定',
@@ -155,13 +154,13 @@ a {
 						testphone("未输入手机号！");
 						return false;
 					}
-					if(!(/^1[3458]\d{9}$/.test(xxy.v1))){ 
+					if(!(/^1[34578]\d{9}$/.test(xxy.v1))){ 
 						testphone("手机号码有误，请重填");
 						return false;
 					}
 					xxy.toast('验证成功');
 				}else{
-					xxy.toast('以取消');
+					xxy.toast('已取消');
 				}
 			}
 		);
