@@ -29,6 +29,7 @@ Dome webSite: https://0123cf.github.io/www/
    <li>增加移动端的支持（包括ie8）[ie8里面的回调依然可用]</li>
    <li>设置内容最高值，阻止冒泡，超出可滑动滚动。</li>
    <li>添加alert函数</li>
+   <li>添加支持多指触控，上拉加载，下拉刷新。</li>
  </ol>
 </body>
 </html>

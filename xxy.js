@@ -238,7 +238,7 @@
 						domHeight  =  window.parseInt(height);
 					this.startTop  =  top;
 					this.startSite  =  {
-						y: touch.pageY
+						y: touch.clientY
 					};
 					this.domHeight  =  domHeight;
 				},false);
@@ -265,7 +265,7 @@
 						}
 					}
 					var touch =  e.touche||e.touches[0],
-						top =  box.scrollTop,
+						top =  view.scrollTop,
 						startY =  this.startSite.y,
 						moveY =  touch.clientY;//获取当前的y轴
 					if(moveY>startY){
@@ -308,6 +308,7 @@
 						}else if(direction == 'up'){
 							// DOTO 上拉加载
 							
+							console.log('d')
 						}
 						this.style.transform  =  'translate3d(0, 0px, 0)';
 						this.direction  =  undefined;

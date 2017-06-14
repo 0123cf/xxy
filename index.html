@@ -30,7 +30,6 @@
 	    margin: 0;
 	    text-decoration: none;
 	    text-align: center;
-	    text-shadow: 1px 1px 0 #fff;
 	    font: 11px/normal sans-serif;
 	    color: #333;
 	    white-space: nowrap;
@@ -66,14 +65,35 @@ a {
     color: #1e6bb8;
     text-decoration: none;
 }
+
+	.touchs {
+		font-weight: 600;
+		text-align: center;
+	}
+	.touchs .mask{
+	    overflow: hidden;
+	    height: 20px;
+	    margin-top: 6px;
+	}
+	.touchs .mask:after {  
+	    content: '';
+	    display: block;
+	    margin: -25px auto 0;
+	    width: 100%;
+	    height: 25px;
+	    border-radius: 125px/12px;
+	    box-shadow: 0 0 8px black;
+	}  
 	  
 	   #comlist{
 		    height: 300px;
 		    width: 5rem;
-		    display: none;
+		    <!-- display: none; -->
 		}
 	  .list{
-	  	height:300px;
+	  	height:600px;
+	    background-image: linear-gradient(to bottom,rgba(0, 255, 20, 0.53) 50%,#fff 50%);
+		background-size: 100% 60px;
 	  }
   </style>
 </head>
@@ -104,12 +124,15 @@ a {
   <br />
 	<br />
 	<br />
-	
+	<div class="touchs">
+		多指触控
+		<div class="mask"></div>
+	</div>
 	<div id="comlist" class="xxy-down-viewbox comlist">
 		<div class="view" data-befor = "下拉刷新">
 			<div class="inner">
 				<ul class="list">
-					<div>上下拉暂时只适配手机端</div>
+				
 				</ul>
 			</div>
 		</div>
@@ -168,13 +191,12 @@ a {
 	
 	
 	
-	/*var test= new xxy.touch();
+	var test= new xxy.touch();
 	test.bind(document.querySelector('#comlist'),{
 		move: true,
 		reload: function(){
 			
 		}
 	});	
-	*/
 </script>
 </html>
