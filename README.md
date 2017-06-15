@@ -1,8 +1,9 @@
 
 
-# 演示地址
-### Dome webSite:
-    [https://0123cf.github.io/www/][1]
+# xxy.js
+    
+## [Live demo](https://0123cf.github.io/www/)
+
 ### xxy.js在线连接
     https://0123cf.github.io/www/xxy.js
  
