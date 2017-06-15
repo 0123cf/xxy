@@ -13,7 +13,7 @@
 		console.error('请关闭xxy的全局对象--xxy');
 		return false;
 	}
-	window.parent.document.head.innerHTML +=  '<style>#xxy-addDom .xxy-popup-box{z-index:99;width:100%;height:100%;position:fixed;top:0;left:0;z-index:99999999;font-size:14px;overflow:hidden;background:rgba(0,0,0,.5)}#xxy-addDom .xxy-popup-box .inner{width:80%;height:0;max-width:280px;background:#fff;position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;color:#646464}#xxy-addDom .xxy-popup-box .inner .inner_box{background:#fff;border:.01px solid #adadad;-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}#xxy-addDom .xxy-popup-box .xxy-popup-title{width:100%;border-bottom:1px solid #E8E8E8;text-align:left;line-height:2.1em;font-size:13px;color:#646464;text-indent:.7em;background-color:#eee}#xxy-addDom .xxy-popup-box .print{padding:15px 20px 0 20px;max-height:250px;overflow:auto}#xxy-addDom .xxy-popup-box .or{width:90%;margin:0 auto}#xxy-addDom .xxy-popup-box button{border-width:0;color:#fff;width:48%;margin:1em 0;padding:.6em 0;border-radius:.4em}#xxy-addDom .xxy-popup-box .xxy-popup-done{background:#FEBB2C}#xxy-addDom .xxy-popup-box .xxy-popup-cancal{background:#eb4b27;margin-left:4%}#xxy-addDom .xxy-popup-box .off{font-size:1.3em;float:right;margin-right:.4em}#xxy-addDom .print_inner p span:nth-child(1){text-align:right}#xxy-addDom .print_inner p span:nth-child(2){text-align:center}#xxy-addDom .print_inner span{display:inline-block;width:48%}#xxy-addDom .print_inner p .important{color:#febb2c}#xxy-addDom .xxy-toast{font-size:15px;color:#fff;position:fixed;bottom:2em;background:rgba(0,0,0,.4);line-height:1.7em;padding:0 1em;border-radius:1em;left:50%;-webkit-transform:translateX(-50%) translateY(-50%);-moz-transform:translateX(-50%) translateY(-50%);-o-transform:translateX(-50%) translateY(-50%);-ms-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);-webkit-transition-property:color;-webkit-transition-duration:2s;-webkit-transition-timing-function:ease}.xxy-down-viewbox{overflow:hidden;position:relative;min-height:200px;min-width:200px;margin:auto;box-shadow:2px 2px 10px 1px rgba(0,0,0,.2);-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000;-moz-perspective:1000;-ms-perspective:1000;perspective:1000}.xxy-down-viewbox>div{height:100%;width:100%;overflow:auto;border:0 solid transparent;background:#eee}.xxy-down-viewbox>div:before{content:attr(data-befor);position:absolute;top:0;color:#646464;width:100%;text-align:center}.xxy-down-viewbox>div>*{background:#fff;position:relative;z-index:1}</style>';
+	window.parent.document.head.innerHTML +=  '<style>#xxy-addDom .xxy-popup-box{z-index:99;width:100%;height:100%;position:fixed;top:0;left:0;z-index:99999999;font-size:14px;overflow:hidden;background:rgba(0,0,0,.5)}#xxy-addDom .xxy-popup-box .inner{width:80%;height:0;max-width:280px;background:#fff;position:absolute;top:0;left:0;right:0;bottom:0;margin:auto;color:#646464}#xxy-addDom .xxy-popup-box .inner .inner_box{background:#fff;border:.01px solid #adadad;-webkit-transform:translateY(-50%);-moz-transform:translateY(-50%);-ms-transform:translateY(-50%);transform:translateY(-50%)}#xxy-addDom .xxy-popup-box .xxy-popup-title{width:100%;border-bottom:1px solid #E8E8E8;text-align:left;line-height:2.1em;font-size:13px;color:#646464;text-indent:.7em;background-color:#eee}#xxy-addDom .xxy-popup-box .print{padding:15px 20px 0 20px;max-height:250px;overflow:auto}#xxy-addDom .xxy-popup-box .or{width:90%;margin:0 auto}#xxy-addDom .xxy-popup-box button{border-width:0;color:#fff;width:48%;margin:1em 0;padding:.6em 0;border-radius:.4em}#xxy-addDom .xxy-popup-box .xxy-popup-done{background:#FEBB2C}#xxy-addDom .xxy-popup-box .xxy-popup-cancal{background:#eb4b27;margin-left:4%}#xxy-addDom .xxy-popup-box .off{font-size:1.3em;float:right;margin-right:.4em}#xxy-addDom .print_inner p span:nth-child(1){text-align:right}#xxy-addDom .print_inner p span:nth-child(2){text-align:center}#xxy-addDom .print_inner span{display:inline-block;width:48%}#xxy-addDom .print_inner p .important{color:#febb2c}#xxy-addDom .xxy-toast{font-size:15px;color:#fff;position:fixed;bottom:2em;background:rgba(0,0,0,.4);line-height:1.7em;padding:0 1em;border-radius:1em;left:50%;-webkit-transform:translateX(-50%) translateY(-50%);-moz-transform:translateX(-50%) translateY(-50%);-o-transform:translateX(-50%) translateY(-50%);-ms-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);-webkit-transition-property:color;-webkit-transition-duration:2s;-webkit-transition-timing-function:ease}.xxy-down-viewbox{overflow:hidden;position:relative;min-height:200px;min-width:200px;margin:auto;box-shadow:2px 2px 10px 1px rgba(0,0,0,.2);-webkit-transform:translate3d(0,0,0);-moz-transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-webkit-backface-visibility:hidden;-moz-backface-visibility:hidden;-ms-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000;-moz-perspective:1000;-ms-perspective:1000;perspective:1000}.xxy-down-viewbox>div{height:100%;width:100%;overflow:auto;border:0 solid transparent;background:#eee}.xxy-down-viewbox>div:before{content:attr(data-befor);position:absolute;top:0;color:#646464;width:100%;text-align:center}.xxy-down-viewbox>div::after{content: attr(data-after);position: absolute;bottom: 5px;color: #646464;width: 100%;text-align: center;}.xxy-down-viewbox>div>*{background:#fff;position:relative;z-index:1}</style>';
 	window.xxy = {
 		s:function(e){
 			e.preventDefault();
@@ -208,7 +208,9 @@
 			function core(box,config){
 				var view  =  box.querySelector('.view'),
 					inner  =  box.querySelector('.inner'),
-					innerHeight  =  parseInt(window.getComputedStyle(box).height);
+					innerHeight  =  parseInt(window.getComputedStyle(box).height),
+					stopGap = 28, // Stop Gap px
+					stopGapDeviation = 5;
 				inner.addEventListener(start,function(e){
 					if(config.body){
 						var body_ =  box,
@@ -242,6 +244,7 @@
 					};
 					this.domHeight  =  domHeight;
 				},false);
+				
 				inner.addEventListener(move,function(e){
 					if(config.body){
 						var body_ =  box,
@@ -267,56 +270,106 @@
 					var touch =  e.touche||e.touches[0],
 						top =  view.scrollTop,
 						startY =  this.startSite.y,
-						moveY =  touch.clientY;//获取当前的y轴
+						moveY =  touch.clientY;//get Y-axis value
 					if(moveY>startY){
-						// 下拉到顶部执行(如下拉未松手上拉，阻止继续执行有精确度问题)
+						// Slide down to top execution
 						if(top <= 0){
 							e.preventDefault();
 							if(config.move){
 								this.direction =  'down';
 								var startTop =  this.startTop,
-									gap =  moveY-startY,
-									topGap =  gap- this.startTop;
+									gap =  moveY - startY,
+									topGap =  (gap-gap/1.37) - this.startTop;
+								if(topGap>stopGap+stopGapDeviation){
+									view.setAttribute('data-befor','释放立即刷新');
+								}else{
+									view.setAttribute('data-befor','下拉刷新');
+								}
 								this.style.transform =  'translate3d(0, '+topGap+'px, 0)';
+								this.topGap = topGap;
 							}
 						}else{
 							return false;
 						}
 					}else{
 						var boxHeight  =  config.body ? window.innerHeight : innerHeight;
-						// 上拉到底部执行 (滚动的距离加auto的高度等于ul总高度)
+						
+						// Pull to the bottom to perform (scroll distance plus auto height equal to UL total height)
 						if(top+boxHeight+1 >= this.domHeight){
 							e.preventDefault();
 							if(config.move){
 								this.direction  =  'up';
-								var gap  =  moveY-startY;
-								this.style.transform  =  'translate3d(0, '+gap+'px, 0)';
+								var gap  =  moveY-startY,
+									v = (gap-gap/1.37);
+									
+								if(-v>stopGap+stopGapDeviation){
+									view.setAttribute('data-after','释放立即刷新');
+								}else{
+									view.setAttribute('data-after','上拉加载');
+								}
+								this.style.transform  =  'translate3d(0, '+v+'px, 0)';
+								this.topGap = -v;
+								
 							}
 						}else{
 							return false;
 						}
 					}
 				},false);
+				
 				inner.addEventListener(end,function(e){
+					var th = this,
+						direction  =  this.direction;
+						
 					e.stopPropagation();
-	//				this.parentNode.style.overflow =  'auto'
-					if(this.direction){
-						this.style.transitionDuration  =  '500ms';
-						var direction  =  this.direction;
-						if(direction == 'down'){
-							config.down&&config.down.bind(box)();
-						}else if(direction == 'up'){
-							// DOTO 上拉加载
-							config.up&&config.up.bind(box)();
-						}
-						this.style.transform  =  'translate3d(0, 0px, 0)';
-						this.direction  =  undefined;
+					if(!this.direction)return false;
+					
+					// backcall commit
+					config.done = function(){
+						th.style.transitionDuration  =  '500ms';
+						th.style.transform  =  'translate3d(0, 0px, 0)';
+						th.direction  =  undefined;
 					}
+					
+					// refresh
+					function reloading(){
+						var v = void 0;
+						
+						if(direction=='up'){
+							v = -stopGap;
+						}else{
+							v = stopGap;
+						}
+						th.style.transitionDuration  =  '500ms';
+						th.style.transform  =  'translate3d(0, '+v+'px, 0)';
+					}
+					
+					// not touch gap value min
+					if(this.topGap < stopGap+stopGapDeviation){
+						config.done();
+						return false;
+					}
+					
+					// tips
+					view.setAttribute('data-befor','正在刷新..');
+					view.setAttribute('data-after','正在刷新..');
+					
+					// backcall
+					if(direction == 'down'){
+						// sild down Refresh
+						config.down&&config.down();
+					}else if(direction == 'up'){
+						// sild up reloading
+						config.up&&config.up();
+					};
+					// refresh
+					reloading();
+					
 				},false);
 			}
 			return {
-				bind: function(dom,obj){
-					core(dom,obj);
+				bind: function(dom,config){
+					core(dom,config);
 				}
 			};
 		}

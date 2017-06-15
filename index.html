@@ -13,10 +13,12 @@
 	  	font-size:16px;
 	  }
 	  
-	  .module {
-	    background-color: #f7f7f7;
-	    padding: 20px;
-	    margin-bottom: 20px;
+		.module{
+			padding: 20px;
+		}
+		.module2{
+			background-color: #f7f7f7;
+			margin-top:2em;
 		}
 		.main-content :first-child {
 	    margin-top: 0;
@@ -120,18 +122,34 @@ a {
 </head>
 <body>
 		<div class="module">
-			<a target="_Blank" class="title">双选弹窗</a>
 			<button onclick="popup()">popup</button>
-	    </div>
-		<div class="module">
-			<a target="_Blank" class="title">确认弹窗</a>
 			<button onclick="alertk()">alert</button>
-	    </div>
-		<div class="module">
-			<a target="_Blank" class="title">自动消失提示</a>
 			<button onclick="toast()">toast</button>
 		</div>
-		<div class="module">
+		<br />
+		<br />
+		<br />
+		<div class="touchs">
+			多指触控
+			<div class="mask"></div>
+		</div>
+		<!-- 上下拉例子 start -->
+		<div id="comlist" class="xxy-down-viewbox comlist">
+			<div class="view" data-befor = "下拉刷新" data-after = "上拉加载" >
+				<div class="inner">
+					<!-- 自定义内容 -->
+					<ul class="list">
+						
+						
+					</ul>
+					<!-- 自定义内容 -->
+				</div>
+			</div>
+		</div>
+		<!-- 上下拉列子 end -->
+		
+		
+		<div class="module module2">
 			<a target="_Blank" class="title">
 				<div class="module-test-list-title">
 					例子：
@@ -142,67 +160,8 @@ a {
 				</div>
 			</a>
 	    </div>
-		<br />
-		<br />
-		<br />
-		<div class="touchs">
-			多指触控
-			<div class="mask"></div>
-		</div>
-		
-		<!-- 上下拉例子 start -->
-		<div id="comlist" class="xxy-down-viewbox comlist">
-			<div class="view" data-befor = "下拉刷新">
-				<div class="inner">
-					<!-- 自定义内容 -->
-					<ul class="list">
-						<p>移动端弹性滚动</p>
-						<p>移动端下拉刷新</p>
-						<p>移动端上拉加载</p>
-					</ul>
-					<!-- 自定义内容 -->
-				</div>
-			</div>
-		</div>
-		<!-- 上下拉列子 end -->
-		
-		<br />
-		<div class="module">
-			<h3>Code:</h3>
-			<div class="jscode">
-				<div>
-					<h5>HTML</h5>
-					<textarea>
-<div id="comlist" class="xxy-down-viewbox comlist">
-	<div class="view" data-befor = "下拉刷新">
-		<div class="inner">
-			内容
-		</div>
-	</div>
 </div>
-					</textarea>
-				</div>
-				<div>
-					<h5>Javascript</h5>
-					<ol>
-						<li>var test= new xxy.touch()</li>
-						<li>test.bind(Dom节点,config)</li>
-					</ol>
-				</div>
-				<br />
-				<div>
-					<i>config</i><br />
-					{<br />
-						<p>//默认false 设置true可开启弹性滚动</p>
-						<p>move: true,</p>
-						<p>//上拉回调</p>
-						<p>up: function(){}</p>
-						<p>//下拉回调</p>
-						<p>down: function(){}</p>
-					}<br />
-				</div>
-			</div>
-		</div>
+</div>
 </body>
 <script src="xxy.js"></script>
 <script>
@@ -261,21 +220,16 @@ a {
 	test.bind(document.querySelector('#comlist'),{
 		move: true,
 		up: function(){
-			xxy.toast('加载成功');
-			var box = this.querySelector('.list');
-			var h = window.getComputedStyle(box).height;
-			box.style.height = parseInt(h)+200+'px';
+			window.setTimeout(function(){
+				this.done();
+				xxy.toast('加载成功')
+			}.bind(this),3000)
 		},
 		down: function(){
-			var box = this.querySelector('.list');
-			if(this.downCo){
-				box.style.backgroundColor = '#fff'; 
-				this.downCo = false; 
-			}else{
-				box.style.backgroundColor = '#0ff'; 
-				this.downCo = true; 
-			}
-			xxy.toast('刷新成功')
+			window.setTimeout(function(){
+				this.done();
+				xxy.toast('刷新成功')
+			}.bind(this),1000)
 		}
 	});	
 </script>
