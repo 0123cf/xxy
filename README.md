@@ -23,6 +23,79 @@ Dome webSite: https://0123cf.github.io/www/
 <h3>xxy.toast:</h3>&nbsp;xxy.toast('内容','消失时间[ms]');
 <HR />
 <div>
+
+
+
+# 上拉刷新，下拉加载
+
+> * 创建Div容器 最外层的ID自定义 
+> * Js实例化And配置
+
+###DIV
+```
+<div id="comlist" class="xxy-down-viewbox comlist">
+	<div class="view" data-befor = "下拉刷新" data-after = "上拉加载" >
+		<div class="inner">
+			<!-- 自定义内容 -->
+			<ul class="list">
+				
+				
+			</ul>
+			<!-- 自定义内容 -->
+		</div>
+	</div>
+</div>
+```
+###Javascript
+```javascript
+	var test= new xxy.touch()
+	test.bind(Dom节点,config)
+```
+###### config	
+```javascript
+{
+	//滑动 默认false 设置true开启
+	move: true,
+	//上拉回调
+	up: backcall
+	//下拉回调
+	down: backcall
+}
+```	
+
+###### backcall
+
+```javascript
+function(){
+  ajax.get(url)
+   .then(()={
+      // 表示加载完成
+      this.done();
+  })
+}
+```
+####Javascript测试代码
+
+```javascript
+var test= new xxy.touch();
+	test.bind(document.querySelector('#comlist'),{
+		move: true,
+		up: function(){
+			window.setTimeout(function(){
+				this.done();
+				xxy.toast('加载成功')
+			}.bind(this),3000)
+		},
+		down: function(){
+			window.setTimeout(function(){
+				this.done();
+				xxy.toast('刷新成功')
+			}.bind(this),1000)
+		}
+	});	
+```
+
+
  History record：<br />
  <ol> 
    <li>兼容了iframe在苹果的出现fiexd问题。</li>
