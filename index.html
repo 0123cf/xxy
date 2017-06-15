@@ -11,6 +11,7 @@
 	  body{
 	  	height:2000px;
 	  	font-size:16px;
+		padding-top: 40px;
 	  }
 	  
 		.module{
@@ -94,13 +95,11 @@ a {
 		}
 	  .list{
 	  	height:600px;
-	    background-image: linear-gradient(to bottom,rgba(0, 255, 20, 0.53) 50%,rgba(0,0,0,0) 50%);
-	    background-image: -webkit-linear-gradient(to bottom,rgba(0, 255, 20, 0.53) 50%,rgba(0,0,0,0) 50%);
-		background-size: 100% 60px;
-		color: #a20;
 		text-align: center;
 		line-height: 4em;
-	  }
+		background-image: repeating-linear-gradient(30deg, hsla(0,0%,100%,.1), hsla(0,0%,100%,.1) 15px, transparent 0, transparent 30px);
+		background-color:#58a;
+		}
 	  
 	  .jscode{
 		padding: 0 1em 0 2em;
@@ -120,7 +119,11 @@ a {
 	  }
   </style>
 </head>
-<body>
+<body>	
+		<div class="touchs">
+			弹窗
+			<div class="mask"></div>
+		</div>
 		<div class="module">
 			<button onclick="popup()">popup</button>
 			<button onclick="alertk()">alert</button>
@@ -130,7 +133,7 @@ a {
 		<br />
 		<br />
 		<div class="touchs">
-			多指触控
+			下拉刷新、上拉加载
 			<div class="mask"></div>
 		</div>
 		<!-- 上下拉例子 start -->
@@ -148,14 +151,18 @@ a {
 		</div>
 		<!-- 上下拉列子 end -->
 		
-		
+		<br />
 		<div class="module module2">
+			<div class="touchs">
+				高级演示
+				<div class="mask"></div>
+			</div>
 			<a target="_Blank" class="title">
 				<div class="module-test-list-title">
-					例子：
+					
 				</div>
 				<div class="module-test-list-inner">
-					<p>手机号验证</p>
+					<p>弹窗取值</p>
 				  <button onclick="testphone()">start</button>
 				</div>
 			</a>
