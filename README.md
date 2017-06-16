@@ -1,7 +1,7 @@
 
-![image](https://0123cf.github.io/www/images/logo2.jpg)
+![image](https://0123cf.github.io/xxy/images/logo2.jpg)
 # Demo
-## [Live demo](https://0123cf.github.io/www/)
+## [Live demo](https://0123cf.github.io/xxy/)
 
 # Install
 
