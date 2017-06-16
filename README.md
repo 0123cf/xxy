@@ -1,6 +1,6 @@
 
 ![image](https://0123cf.github.io/www/images/logo2.jpg)
-# Dome
+# Demo
 ## [Live demo](https://0123cf.github.io/www/)
 
 # Install
