@@ -1,11 +1,20 @@
 
 ![image](https://0123cf.github.io/www/images/logo2.jpg)
-
+# Dome
 ## [Live demo](https://0123cf.github.io/www/)
 
-### xxy.js在线连接
-    https://0123cf.github.io/www/xxy.js
- 
+# Install
+
+#### NPM
+```
+npm install xxy
+```
+
+#### SRC
+```
+https://0123cf.github.io/www/xxy.js
+```
+# Usage
 ## popup:
 ```js
 xxy.popup('标题'，'内容,支持插入标签','左按钮文字','右按钮文字',function(e){ 
