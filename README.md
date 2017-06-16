@@ -1,6 +1,6 @@
 
 
-# xxy.js
+
     
 ## [Live demo](https://0123cf.github.io/www/)
 
@@ -23,7 +23,7 @@ xxy.alert('内容',function(){
     // 回调
 }); 
 ```
-##toast:
+## toast:
 ```js
  xxy.toast('内容','消失时间[ms]');
 ```
@@ -32,7 +32,7 @@ xxy.alert('内容',function(){
 > * 创建Div容器 最外层的ID自定义 
 > * Js实例化And配置
 
-###DIV
+### DIV
 ```
 <div id="comlist" class="xxy-down-viewbox comlist">
 	<div class="view" data-befor = "下拉刷新" data-after = "上拉加载" >
