@@ -1,7 +1,4 @@
 
-
-![image](https://0123cf.github.io/www/images/logo.png)
-    
 ## [Live demo](https://0123cf.github.io/www/)
 
 ### xxy.js在线连接
