@@ -115,3 +115,7 @@ var test= new xxy.touch();
 - 添加alert函数
 - 添加支持多指触控，上拉加载，下拉刷新。
 - 添加上下拉回调
+
+### LICENSE
+
+MIT
