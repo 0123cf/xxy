@@ -12,7 +12,7 @@ npm install xxy
 
 #### SRC
 ```
-https://0123cf.github.io/www/xxy.js
+https://0123cf.github.io/xxy/xxy.js
 ```
 # Usage
 ## popup:
