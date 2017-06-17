@@ -6,21 +6,62 @@
   <meta name = "format-detection" content = "telephone=no">
   <title>js-xxy-popup Dome</title>
   <style>
-	  *{margin: 0;padding: 0;-webkit-user-select: none; user-select: none;}
+	*{margin: 0;padding: 0;-webkit-user-select: none; user-select: none;}
+	
+	body{
+		height:2000px;
+		font-size:16px;
+		background: #eee;
+		color: #333;
+	}
+	.header {
+		background-color: #fff;
+		padding: 40px 0 30px;
+	    background-image: linear-gradient(-30deg,rgba(238, 238, 238, 0.42,rgba(52, 121, 189, 0.32)));
+	    background-image: -webkit-linear-gradient(-30deg,rgba(238, 238, 238, 0.42),rgba(52, 121, 189, 0.32));
+	}
+	.wrapper {
+		box-sizing: border-box;
+		max-width: 1200px;
+		min-width: 320px;
+		margin: 0 auto;
+		padding: 0 15px;
+	}
+	.project-title {
+		font-size: 24px;
+		font-weight: 400;
+		margin-bottom: 15px;
+	}
+	.project-description {
+		font-size: 15px;
+		margin-bottom: 25px;
+	}
+	.project-description p {
+		margin-bottom: 10px;
+	}
+	.button-group {
+		font-size: 0;
+	}
+	.button-group .button {
+		margin-right: 10px;
+		margin-bottom: 10px;
+	}
+	.button-default {
+		color: #6064ad;
+		border: 1px solid #6064ad;
+	}
+	.button {
+		overflow: hidden;
+		position: relative;
+		display: inline-block;
+		height: 38px;
+		line-height: 38px;
+		padding: 0 20px;
+		font-size: 14px;
+		border-radius: 2px;
+	}
 	  
-	  body{
-	  	height:2000px;
-	  	font-size:16px;
-		padding-top: 40px;
-	  }
-	  
-		.module{
-			padding: 20px;
-		}
-		.module2{
-			background-color: #f7f7f7;
-			margin-top:2em;
-		}
+		
 		.main-content :first-child {
 	    margin-top: 0;
 		}
@@ -52,26 +93,21 @@
 		.module-test-list-title{
 			font-size: 15px;
 		}
-		.module-test-list-inner{
-			font-size: 20px;
-			padding-left: 2em;
-			box-sizing: border-box;
-		}
+	
 
-
-.title {
-    margin-bottom: 10px;
-    font-size: 30px;
-    display: block;
-}
-a {
-    color: #1e6bb8;
-    text-decoration: none;
-}
+	a {
+		display: block;
+		color: #1e6bb8;
+		text-decoration: none;
+	}
+	.title{
+		color: inherit;
+	}
 
 	.touchs {
 		font-weight: 600;
 		text-align: center;
+		margin: 1em 0;
 	}
 	.touchs .mask{
 	    overflow: hidden;
@@ -85,7 +121,7 @@ a {
 	    width: 100%;
 	    height: 25px;
 	    border-radius: 125px/12px;
-	    box-shadow: 0 0 8px black;
+	    box-shadow: 0 0 8px rgba(0,0,0,.3);
 	}  
 	  
 	   #comlist{
@@ -117,58 +153,276 @@ a {
 	  .jscode ol{
 		line-height: 2em;
 	  }
+	  
+	 @media only screen and (min-width: 768px){
+		.content .wrapper {
+			margin: 0 auto;
+		}
+		.main {
+			box-sizing: border-box;
+			width: 75%;
+			padding-right: 20px;
+			float: left;
+		}
+		.wrapper {
+			padding: 0 20px;
+		}
+		.sidebar {
+			box-sizing: border-box;
+			width: 25%;
+			float: right;
+		}
+		.content .wrapper {
+			margin: 0 auto;
+		}
+		.wrapper {
+			padding: 0 50px;
+		}
+	}
+	
+	.section-heading .section-title {
+		font-weight: 400;
+		font-size: 22px;
+		color: #666;
+	}
+	.section-heading {
+		padding: 20px 0;
+	}
+	.section-heading {
+		overflow: hidden;
+		text-align: left;
+		padding: 20px 15px;
+	}
+	.content .wrapper {
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	.content-block {
+		background-color: #fff;
+		padding: 15px;
+		margin-bottom: 20px;
+	}
+	.content-block .subtitle {
+		font-size: 14px;
+		font-weight: 400;
+		word-wrap: break-word;
+		word-break: break-all;
+		-ms-word-break: break-all;
+		word-break: break-word;
+		color: #999;
+		margin-bottom: 10px;
+	}
+	a {
+		-webkit-transition: -webkit-transform 1s;
+		transition: transform 1s;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+	}
+	.history-version {
+		position: relative;
+		list-style: none;
+		margin: 0;
+	}
+	.history-version li {
+		padding: 5px 0 5px 15px;
+		position: relative;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -ms-flexbox;
+		display: flex;
+	}
+	.history-version li:before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: -2px;
+		z-index: 10;
+		margin-top: -5px;
+		display: block;
+		width: 6px;
+		height: 6px;
+		background-color: #ccc;
+		border: 2px solid #fff;
+		border-radius: 999px;
+	}
+	.history-version .version {
+		width: 40px;
+		margin-right: 10px;
+	}
+	.history-version .time {
+		-webkit-box-flex: 1;
+		-webkit-flex: 1;
+		-ms-flex: 1;
+		flex: 1;
+		color: #999;
+		font-size: 13px;
+	}
+	.history-version:after {
+		content: '';
+		position: absolute;
+		top: 12px;
+		bottom: 15px;
+		left: 2px;
+		width: auto;
+		height: auto;
+		z-index: 0;
+		border-left: 2px solid #ccc;
+	}
+	
+	.content-block {
+		padding: 15px;
+		margin-bottom: 20px;
+		background-image: repeating-linear-gradient(30deg, hsla(0,0%,100%,.1), hsla(0,0%,100%,.1) 15px, transparent 0, transparent 30px);
+		background-color: rgba(30, 107, 184, 0.12);
+	}
+	
+	.main-inner{
+		max-width: 400px;
+		
+	}
+	
+	code{
+		display: block;
+		padding: 16px;
+		overflow: auto;
+		font-size: 85%;
+		line-height: 1.45;
+		background-color: #f6f8fa;
+		border-radius: 3px;
+	}
+	
+	h2>A{
+		color: #333;
+		border-bottom: 2px solid rgba(0,0,0,.2);
+	}
+	h4{
+		padding: 1em 0;
+	}
+	code{
+		color: #777;
+	}
   </style>
 </head>
 <body>	
-		<div class="touchs">
-			弹窗
-			<div class="mask"></div>
-		</div>
-		<div class="module">
-			<button onclick="popup()">popup</button>
-			<button onclick="alertk()">alert</button>
-			<button onclick="toast()">toast</button>
-		</div>
-		<br />
-		<br />
-		<br />
-		<div class="touchs">
-			下拉刷新、上拉加载
-			<div class="mask"></div>
-		</div>
-		<!-- 上下拉例子 start -->
-		<div id="comlist" class="xxy-down-viewbox comlist">
-			<div class="view" data-befor = "下拉刷新" data-after = "上拉加载" >
-				<div class="inner">
-					<!-- 自定义内容 -->
-					<ul class="list">
-						
-						
-					</ul>
-					<!-- 自定义内容 -->
-				</div>
-			</div>
-		</div>
-		<!-- 上下拉列子 end -->
-		
-		<br />
-		<div class="module module2">
-			<div class="touchs">
-				高级演示
-				<div class="mask"></div>
-			</div>
-			<a target="_Blank" class="title">
-				<div class="module-test-list-title">
+	<header class="header">
+        <div class="wrapper clearfix">
+            <h1 class="project-title">XXY 轻量级的WEB移动端框架</h1>
+            <div class="project-description">
+                <p>这是一款轻量级的WEB移动端框架，包括常见的 alert、popup、toast 三种类型弹窗，没有第三方库依赖。</p>
+            </div>
+            <div class="project-follow">
+                <div class="button-group">
+                    <a target="_self" href="#install" class="button button-default">GET STARTED</a>
+                    <a target="_blank" href="https://github.com/0123cf/xxy" class="button button-default">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </header>
+	<div class="content">
+		<div class="wrapper clearfix">
+				<section class="section-heading">
+					<h2 class="section-title">演示</h2>
+				</section>
+			<div class="main">
+				<div class="content-block">
+					<div class="main-inner">
 					
+						<div class="touchs">
+							弹窗
+							<div class="mask"></div>
+						</div>
+							<button onclick="popup()">popup</button>
+							<button onclick="alertk()">alert</button>
+							<button onclick="toast()">toast</button>
+						<br />
+						
+						<br />
+						<div class="touchs">
+							使用例子
+							<div class="mask"></div>
+						</div>
+						<a target="_Blank" class="title">
+							<button onclick="testphone()">弹窗取值</button>
+						</a>
+						
+						<br />
+						<br />
+						
+						<div class="touchs">
+							下拉刷新、上拉加载
+							<div class="mask"></div>
+						</div>
+						<!-- 上下拉例子 start -->
+						<div id="comlist" class="xxy-down-viewbox comlist">
+							<div class="view" data-befor = "下拉刷新" data-after = "上拉加载" >
+								<div class="inner">
+									<!-- 自定义内容 -->
+									<ul class="list">
+										
+										
+									</ul>
+									<!-- 自定义内容 -->
+								</div>
+							</div>
+						</div>
+						<!-- 上下拉列子 end -->
+						
+						
+						<br />
+						<br />
+						<h2><a name="install">Install</a></h2>
+						<h4>NPM</h4>
+						<div>
+							<code>npm install xxy</code>
+						</div>
+						<h4>SRC</h4>
+						<div>
+							<code>https://0123cf.github.io/xxy/xxy.js</code>
+						</div>
+						
+						<br />
+						<br />
+					</div>
 				</div>
-				<div class="module-test-list-inner">
-					<p>弹窗取值</p>
-				  <button onclick="testphone()">start</button>
+			</div>
+			<aside class="sidebar">
+				<!-- S content-block  -->
+				<div class="content-block">
+					<div class="subtitle">反馈 BUG</div>
+					<p><a target="_blank" href="https://github.com/0123cf/xxy/issues">GiHub issues</a></p>
 				</div>
-			</a>
-	    </div>
-</div>
-</div>
+				<!-- E content-block  -->
+
+				<!-- S content-block  -->
+				<div class="content-block">
+					<div class="subtitle">依赖</div>
+					<p>无</p>
+				</div>
+				<!-- E content-block  -->
+
+				<!-- S content-block  -->
+				<div class="content-block">
+					<div class="subtitle">npm版本</div>
+					<ul class="history-version">
+						<li><span class="version">v1.0.2</span><span class="time">准备中...</span></li>
+						<li><span class="version">v1.0.1</span><span class="time">2017-06-16</span></li>
+						<li><span class="version">v1.0.0</span><span class="time">2016-08-10</span></li>
+					</ul>
+				</div>
+				<!-- E content-block  -->
+
+
+				<!-- S content-block  -->
+				<div class="content-block">
+					<div class="subtitle">协议</div>
+					<p>MIT</p>
+				</div>
+				<!-- E content-block  -->
+			</aside>
+		</div>
+	</div>
 </body>
 <script src="xxy.js"></script>
 <script>
