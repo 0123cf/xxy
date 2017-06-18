@@ -26,6 +26,7 @@
 		window.parent.document.head.appendChild(tag);
 	}
 	
+	// create dom
 	if(!Boolean(id('xxy-addDom'))){
 		try{
 			var div = window.parent.document.createElement('div');
@@ -36,27 +37,33 @@
 		}
 	}
 	
-	if(typeof window.parent.xxy == 'object'){
+	// Avoid multiple imports, resulting in a different version of the first class
+	if(typeof window.xxy == 'object'){
 		console.error('Close the global object of XXY--xxy');
 		return false;
 	}
+	
+	// styles
 	var popup = '#xxy-addDom .xxy-popup-box{position:fixed;top:0;left:0;z-index:99;z-index:99999999;overflow:hidden;width:100%;height:100%;background:rgba(0,0,0,.5);font-size:14px}#xxy-addDom .xxy-popup-box .inner{position:absolute;top:0;right:0;bottom:0;left:0;margin:auto;width:80%;height:0;max-width:280px;background:#fff;color:#646464}#xxy-addDom .xxy-popup-box .inner .inner_box{border:.01px solid #adadad;background:#fff;-webkit-transform:translateY(-50%);transform:translateY(-50%);-ms-transform:translateY(-50%)}#xxy-addDom .xxy-popup-box .xxy-popup-title{width:100%;border-bottom:1px solid #e8e8e8;background-color:#eee;color:#646464;text-align:left;text-indent:.7em;font-size:13px;line-height:2.1em}#xxy-addDom .xxy-popup-box .print{overflow:auto;padding:15px 20px 0;max-height:250px}#xxy-addDom .xxy-popup-box .or{margin:0 auto;width:90%}#xxy-addDom .xxy-popup-box button{margin:1em 0;padding:.6em 0;width:48%;border-width:0;border-radius:.4em;color:#fff}#xxy-addDom .xxy-popup-box .xxy-popup-done{background:#febb2c}#xxy-addDom .xxy-popup-box .xxy-popup-cancal{margin-left:4%;background:#eb4b27}#xxy-addDom .xxy-popup-box .off{float:right;margin-right:.4em;font-size:1.3em}#xxy-addDom .print_inner p span:nth-child(1){text-align:right}#xxy-addDom .print_inner p span:nth-child(2){text-align:center}#xxy-addDom .print_inner span{display:inline-block;width:48%}#xxy-addDom .print_inner p .important{color:#febb2c}';
 	var toast = '#xxy-addDom .xxy-toast{position:fixed;bottom:2em;left:50%;padding:0 1em;border-radius:1em;background:rgba(0,0,0,.4);color:#fff;font-size:15px;line-height:1.7em;-webkit-transition-timing-function:ease;-webkit-transition-duration:2s;-webkit-transition-property:color;-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);-ms-transform:translateX(-50%) translateY(-50%)}';
 	var touch = '.xxy-down-viewbox{position:relative;overflow:hidden;margin:auto;min-width:200px;min-height:200px;box-shadow:2px 2px 10px 1px rgba(0,0,0,.2);-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-webkit-backface-visibility:hidden;-ms-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000;-ms-perspective:1000;perspective:1000}.xxy-down-viewbox>div{overflow:auto;width:100%;height:100%;border:0 solid transparent;background:#eee}.xxy-down-viewbox>div:before{top:0;content:attr(data-befor)}.xxy-down-viewbox>div:after,.xxy-down-viewbox>div:before{position:absolute;width:100%;color:#646464;text-align:center}.xxy-down-viewbox>div:after{bottom:5px;content:attr(data-after)}.xxy-down-viewbox>div>*{position:relative;z-index:1;background:#fff}'
 	
 	var iosPopup = '#xxy-addDom .xxy-popup-box{position:fixed;top:0;left:0;z-index:99;z-index:99999999;overflow:hidden;width:100%;height:100%;background:rgba(0,0,0,.5);font-size:14px}#xxy-addDom .xxy-popup-box .inner{position:absolute;top:0;right:0;bottom:0;left:0;margin:auto;width:80%;height:0;max-width:280px;background:rgba(255,255,255,.95)}#xxy-addDom .xxy-popup-box .inner .inner_box{background:#fff;-webkit-transform:translateY(-50%);transform:translateY(-50%);-ms-transform:translateY(-50%);border-radius:13px}#xxy-addDom .xxy-popup-box .xxy-popup-title{font-size:18px;font-weight:500;text-align:center;padding-top:5px;line-height:2em}#xxy-addDom .xxy-popup-box .print{overflow:auto;padding:0 15px 15px 15px;max-height:250px}#xxy-addDom .xxy-popup-box .or{margin:0 auto;border-bottom-left-radius:13px;border-bottom-right-radius:13px;overflow:hidden}#xxy-addDom .xxy-popup-box button{border-width:0;color:#007aff;background:#fff;background:rgba(255,255,255,.95);font-size:17px;line-height:44px;position:relative;overflow:hidden;box-sizing:border-box;width:50%;height:44px;padding:0 5px;cursor:pointer;text-align:center;white-space:nowrap;text-overflow:ellipsis;color:#007aff;background:rgba(255,255,255,.95);-webkit-box-flex:1;border-top:1px solid #cdcdcd}#xxy-addDom .xxy-popup-box .xxy-popup-cancal{border-left:1px solid #cdcdcd}#xxy-addDom .xxy-popup-box .off{float:right;margin-right:.4em;font-size:1.3em}#xxy-addDom .print_inner p span:nth-child(1){text-align:right}#xxy-addDom .print_inner p span:nth-child(2){text-align:center}#xxy-addDom .print_inner span{display:inline-block;width:48%}#xxy-addDom .print_inner p .important{color:#febb2c}';
 	
+	// add style
 	addStyle('xxy-style-popup',popup);
 	addStyle('xxy-style-toast',toast);
 	addStyle('xxy-style-touch',touch);
 	
-	
+	// create xxy
 	window.xxy = (function (){
+		// defaults config
 		var defaults = {},
 			// popup configuer
 			popupui = {
 				skin: void 0,
-				mask: .5
+				mask: .5,
+				an: false
 			}
 			
 		defaults = {};
@@ -180,11 +187,11 @@
 				}
 				
 				var style = {
-					background:  'style="background: rgba(0,0,0,'+ui.mask+');"'
+					background:  'background: rgba(0,0,0,'+ui.mask+')'
 				};
 				var c = [
-						'<div '+style.background+' class = "xxy-popup-box" id = "xxy-popup-box">',
-							'<div class = "inner">',
+						'<div style="'+style.background+';" class = "xxy-popup-box" id = "xxy-popup-box">',
+							'<div class = "inner" style="transition: all 50ms;">',
 								'<div class = "inner_box">',
 									'<div class = "xxy-popup-inner">',
 										'<div class = "xxy-popup-title"> <i class = "iconfont icon-tishi"></i> ',title,
@@ -200,7 +207,18 @@
 							'</div>',
 						'</div>'
 					].join('');
-				id('xxy-addDom').innerHTML +=  c;			
+				id('xxy-addDom').innerHTML +=  c;	
+				
+				if(ui.an){
+					var innerBox = window.parent.document.querySelector("#xxy-popup-box .inner");
+					innerBox.style.transform = 'scale(1.1,1.2)';
+					innerBox.style.webkitTransform = 'scale(1.2,1.2)';
+					window.setTimeout(function(){
+						innerBox.style.transform = 'scale(1,1)';
+						innerBox.style.webkitTransform = 'scale(1,1)';
+					},10);
+				}
+				
 				id('xxy_popup_inner_print').ontouchmove = function(e){
 					e.stopPropagation();
 				};
