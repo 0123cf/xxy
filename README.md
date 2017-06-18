@@ -30,6 +30,14 @@ xxy.config(config);
  * 目前只配置了ios，安卓还未添加（欢迎大家提交pr）
  */
 ```
+##### Div Style
+``` style
+<style id="{{config}}"></style>
+config:
+    xxy-style-popup <!-- 弹窗 -->
+    xxy-style-toast <!-- toast -->
+    xxy-style-touch <!-- 上下拉滑动 --> 
+```
 ## popup:
 ```js
 xxy.popup('标题'，'内容,支持插入标签','左按钮文字','右按钮文字',function(e){ 
