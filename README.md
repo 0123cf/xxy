@@ -15,6 +15,21 @@ npm install xxy
 https://0123cf.github.io/xxy/xxy.js
 ```
 # Usage
+## config:
+```js
+// 配置  非必选项
+var config = {
+    // 蒙版不透明度 默认.5
+    mask: .4,
+    // 风格 分'ios'和'android' (小写) 
+    skin: 'ios'
+};
+xxy.config(config);
+/* 
+ * tips:
+ * 目前只配置了ios，安卓还未添加（欢迎大家提交pr）
+ */
+```
 ## popup:
 ```js
 xxy.popup('标题'，'内容,支持插入标签','左按钮文字','右按钮文字',function(e){ 
