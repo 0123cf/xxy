@@ -20,9 +20,11 @@ https://0123cf.github.io/xxy/xxy.js
 // 配置  非必选项
 var config = {
     // 蒙版不透明度 默认.5
-    mask: .4,
+    mask: .3,
     // 风格 分'ios'和'android' (小写) 
-    skin: 'ios'
+    skin: 'ios',
+    // 动画配置项 默认false
+    an: true
 };
 xxy.config(config);
 /* 
