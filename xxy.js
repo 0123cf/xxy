@@ -116,6 +116,27 @@
 				}
 			},
 			
+			
+			/**
+			 * get parent Element back function
+			 * @param {Object} box
+			 * @param {Object} key
+			 * @param {Object} val
+			 * @param {Object} backcall
+			 */
+			getParent:function (box,key,val,backcall){
+				if(box[key]==val){
+					backcall(box);
+				} else{
+					if(!box||box.tagName=='BODY'){
+						return false;
+					}else{
+						var boxParendNode=box.parentNode;
+						getParent(boxParendNode);
+					}
+				}
+			},
+			
 			/**
 			 * config
 			 */
