@@ -124,15 +124,15 @@
 			 * @param {Object} val
 			 * @param {Object} backcall
 			 */
-			getParent:function (box,key,val,backcall){
-				if(box[key]==val){
+			getParent: function(box,key,val,backcall){
+				if(box[key] === val&&box[key] != void 0){
 					backcall(box);
 				} else{
-					if(!box||box.tagName=='BODY'){
+					if(!box||box.tagName == 'BODY'){
 						return false;
 					}else{
 						var boxParendNode=box.parentNode;
-						getParent(boxParendNode);
+						xxy.getParent(boxParendNode);
 					}
 				}
 			},
@@ -560,10 +560,3 @@
 		return _init;
 	})();
 }();
-
-//	xxy.popup('xx')
-//	xxy.popup('xx','oo');
-//	xxy.popup('xx','oo','1','2');
-//	xxy.popup('oo000',function(e){
-//		console.log(e)
-//	});
