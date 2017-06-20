@@ -377,7 +377,7 @@
 				id('xxy-addDom').appendChild(toast_div);
 				this.toastRemveTime = window.setTimeout(function(){
 					
-					var child = toast_div;
+					var child = id('xxy-toast');
 					
 					child.style.background = 'rgba(0,0,0,0)'
 					child.style.color = 'rgba(0,0,0,0)'
