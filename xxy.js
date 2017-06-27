@@ -625,7 +625,9 @@
 					
 			        //手指抬起
 			        banner.addEventListener('touchend', function (e) {
-			        	// 手动点击
+			        	/**
+						 * 手动点击
+						 */
 			        	var target = e.target
 			        	target.running = true
 			        	;(function qipao(box){
@@ -659,10 +661,10 @@
 			        	 */
 			            //根据滑动长度求索引
 			            if(this.running){
-			            	index = Math.round(translateX / rootWidth)
+							var indexGap = translateX / rootWidth - index;
+							indexGap > .2 ? index++ : 
+							indexGap  < -.2 ? index-- : ''
 						}
-						//console.log(translateX,rootWidth)
-						
 			            //越界判断
 			            if (index < 0) {
 			                index = 0
@@ -760,7 +762,6 @@
 					}
 					config.self = this
 					cors(e,config)
-					console.log(this)
 				}
 				
 				var result = {
