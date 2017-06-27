@@ -659,18 +659,8 @@
 			        	 */
 			            //根据滑动长度求索引
 			            if(this.running){
-			            	// index = Math.round(translateX / rootWidth)
-			            	var test_length = index-translateX / rootWidth,
-			            		test_gap = test_length>0
-			            		?test_length
-			            		:translateX / rootWidth - index
-			            	if(test_gap>.2){
-				           	 	if(test_length>0){
-				           	 		index--
-				           	 	}else{
-				           	 		index++
-				           	 	}
-				           	}
+			            	index - translateX / rootWidth > .2 ? index-- : 
+							index - translateX / rootWidth < -.2 ? index++ : ''
 						}
 			            
 			            //越界判断
