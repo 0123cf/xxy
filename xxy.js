@@ -659,10 +659,20 @@
 			        	 */
 			            //根据滑动长度求索引
 			            if(this.running){
-			            	index = Math.round(translateX / rootWidth)
+			            	// index = Math.round(translateX / rootWidth)
+			            	var test_length = index-translateX / rootWidth,
+			            		test_gap = test_length>0
+			            		?test_length
+			            		:translateX / rootWidth - index
+			            	if(test_gap>.2){
+				           	 	if(test_length>0){
+				           	 		index--
+				           	 	}else{
+				           	 		index++
+				           	 	}
+				           	}
 						}
-						//console.log(translateX,rootWidth)
-						
+			            
 			            //越界判断
 			            if (index < 0) {
 			                index = 0
@@ -760,7 +770,6 @@
 					}
 					config.self = this
 					cors(e,config)
-					console.log(this)
 				}
 				
 				var result = {
