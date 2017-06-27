@@ -153,17 +153,18 @@ var test= new xxy.touch();
 ```
 ### Javascript
 ```javascript
-	// 轮播
-	var baner = xxy.slider()
-	var bConfig = {
-		// 非必须
-		time: 10*1000
-	}
-	baner.bind(document.querySelector("#banner-wrap"),bConfig)
-	baner.on('gap',function(e){
-		// 这是手指滑动的距离
-		console.log(e)
-	})
+// 轮播
+var baner = xxy.slider()
+var bConfig = {
+	// 非必须
+	time: 10*1000
+}
+baner.bind(document.querySelector("#banner-wrap"),bConfig)
+// 监听gap[非必选项]
+baner.on('gap',function(e){
+	// 这是手指滑动的距离
+	console.log(e)
+})
 ```
 
 
