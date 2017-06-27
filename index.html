@@ -6,8 +6,16 @@
   <meta name = "format-detection" content = "telephone=no">
   <title>js-xxy-popup Dome</title>
   <style>
-	*{margin: 0;padding: 0;-webkit-user-select: none; user-select: none;}
-	
+*{margin:0;padding:0;list-style:none;}
+blockquote,body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,hr,input,legend,li,ol,p,pre,td,textarea,th,ul{margin:0;padding:0;}
+body,button,input,select,textarea{font:12px/1.5 tahoma,arial,\5b8b\4f53,sans-serif;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+address,cite,dfn,em,var{font-style:normal;}
+code,kbd,pre,samp{font-family:courier new,courier,monospace;}
+small{font-size:12px;}
+ol,ul{list-style:none;}
+a{text-decoration:none;}
+a:hover{text-decoration:underline;}
 	body{
 		height:2000px;
 		font-size:16px;
@@ -376,6 +384,62 @@
 						</div>
 						<!-- 上下拉列子 end -->
 						
+						<br />
+						<br />
+						<div class="touchs">
+							轮播
+							<div class="mask"></div>
+						</div>
+						
+						<!--轮播 start-->
+						<style>
+							#banner-wrap{
+								position:relative;overflow:hidden;
+							}
+							#banner-wrap>ul>li{
+								float: left;
+							}
+							#banner-wrap>ul>li>div{
+								height: 200px;
+								background-image: repeating-linear-gradient(30deg, hsla(0,0%,100%,.1), hsla(0,0%,100%,.1) 15px, transparent 0, transparent 30px);
+   							background-color: #58a;
+							}
+							
+							/* 小圆点 */
+							#banner-wrap>#point{position:absolute;bottom:6px;width:100%;text-align:center;}
+							#banner-wrap>#point span{display:inline-block;margin:0 4px;width:6px;height:6px;border-radius:50%;background-color:#b0b0b0;}
+							#banner-wrap>#point span.active{background-color:#F06333;}
+							
+							/*icon
+							#banner-wrap .touch{position:absolute;top:0;bottom:0;z-index:2;margin:auto 0;width:30px;height:30px;}
+							#banner-wrap .icon{width:30px;height:30px;background:rgba(0,0,0,0);vertical-align:middle;fill:rgba(255,255,255,.8);}
+							#banner-wrap .left{left:1px;}
+							#banner-wrap .right{right:1px;}
+							*/
+						</style>
+						<div id="banner-wrap">
+					    <ul>
+					    	<li>
+					    		<div>1</div>
+					    	</li>
+					    	<li>
+					    		<div>2</div>
+					    	</li>
+					    	<li>
+					    		<div>3</div>
+					    	</li>
+					    </ul>
+					    
+					    <!--左右切换 （非必须）stert-->
+					    <!--<div id="slider-left" class="touch left">
+					    	<svg v-on:click="go" t="1492745076763" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2359" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs></defs><path d="M480.591151 216.192877" p-id="2360"></path><path d="M475.940225 175.233" p-id="2361"></path><path d="M369.112174 514.863211l381.074112-379.929032c13.155624-13.132088 13.155624-34.387181 0-47.494711l-11.905144-11.879562c-13.179161-13.107529-34.485419-13.107529-47.642067 0l-416.844803 415.544181c-13.131065 13.131065-13.131065 34.388205 0 47.51927l416.844803 415.544181c13.155624 13.106506 34.511002 13.106506 47.642067 0l11.905144-11.879562c13.155624-13.107529 13.155624-34.362622 0-47.51927L369.112174 514.863211z" p-id="2362"></path></svg>
+					    </div>
+					    <div id="slider-right" class="touch right">
+					    	<svg t="1498121050750" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2366" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M317.20358 1023.807475 245.969467 959.619764 648.615477 512 245.969467 64.380236 317.20358 0.192525 777.606979 512 317.20358 1023.807475Z" p-id="2367"></path></svg>
+					    </div>-->
+					    <!--左右切换 end-->
+					  </div>
+						<!--轮播end-->
 						
 						<br />
 						<br />
@@ -440,29 +504,29 @@
 		skin: 'ios',
 		an: true
 	};
-	xxy.config(config);
+	xxy.config(config)
 	
 	function popup(){
 		xxy.popup('小提示','您觉得xxy弹窗做的如何？','好','不好',function(e){
 			if(e==0){
 			  xxy.toast('谢谢的你支持！');
 			}else{
-			  xxy.toast('xxy会继续加油↖(^ω^)↗');
+			  xxy.toast('xxy会继续加油↖(^ω^)↗')
 			}
-		});
+		})
 	}
 	function alertk(){
 		xxy.alert('这是alert弹窗',function(){
-			xxy.toast('done');
-		});
+			xxy.toast('done')
+		})
 	}
 	function toast(){
-		xxy.toast('正在开启wifi');
+		xxy.toast('正在开启wifi')
 	}
 	
-	
+	// 手机号绑定
 	function testphone(tips){
-		var tips= tips?tips:'';
+		var tips= tips?tips:''
 		xxy.popup(
 			'手机号绑定',
 			'<input style="margin:.5em 0;padding: .2em;border-width:0px;border:1px solid #ddd; box-sizing: border-box;width:100%;" onchange="xxy.v1= this.value" />'+
@@ -476,39 +540,51 @@
 						return false;
 					}
 					if(xxy.v1.length<=1){
-						testphone("未输入手机号！");
-						return false;
+						testphone("未输入手机号！")
+						return false
 					}
 					if(!(/^1[34578]\d{9}$/.test(xxy.v1))){ 
-						testphone("手机号码有误，请重填");
-						return false;
+						testphone("手机号码有误，请重填")
+						return false
 					}
-					xxy.toast('验证成功');
+					xxy.toast('验证成功')
 				}else{
-					xxy.toast('已取消');
+					xxy.toast('已取消')
 				}
 			}
 		);
 	}
 	
 	
-	
-	var test= new xxy.touch();
+	// 上拉拉动
+	var test= new xxy.touch()
 	test.bind(document.querySelector('#comlist'),{
 		move: true,
 		up: function(){
 			window.setTimeout(function(){
-				this.done();
+				this.done()
 				xxy.toast('加载成功')
 			}.bind(this),3000)
 		},
 		down: function(){
 			window.setTimeout(function(){
-				this.done();
+				this.done()
 				xxy.toast('刷新成功')
 			}.bind(this),1000)
 		}
-	});	
+	})
+	
+	// 轮播
+	var slidera = xxy.slider()
+	var config = {
+		// 非必须
+		time: 10*1000
+	}
+	slidera.bind(document.querySelector("#banner-wrap"),config)
+	slidera.on('gap',function(e){
+		// 这是手指滑动的距离
+		console.log(e)
+	})
 </script>
 </html>
 
