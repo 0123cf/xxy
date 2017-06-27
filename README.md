@@ -66,7 +66,7 @@ xxy.alert('内容',function(){
 > * Js实例化And配置
 
 ### DIV
-```
+``` HTML
 <div id="comlist" class="xxy-down-viewbox comlist">
 	<div class="view" data-befor = "下拉刷新" data-after = "上拉加载" >
 		<div class="inner">
@@ -128,6 +128,45 @@ var test= new xxy.touch();
 		}
 	});	
 ```
+
+## 轮播
+
+> * 创建Div容器 最外层的ID自定义 
+> * Js实例化
+### DIV
+``` html
+<div id="banner-wrap">
+    <ul>
+	<li>
+		<div>1</div>
+	</li>
+	<li>
+		<div>2</div>
+	</li>
+	<li>
+		<div>3</div>
+	</li>
+    </ul>
+    <!-- 这里可以配置点击切换，详情看demo -->
+</div>
+
+```
+### Javascript
+```javascript
+	// 轮播
+	var baner = xxy.slider()
+	var bConfig = {
+		// 非必须
+		time: 10*1000
+	}
+	baner.bind(document.querySelector("#banner-wrap"),bConfig)
+	baner.on('gap',function(e){
+		// 这是手指滑动的距离
+		console.log(e)
+	})
+```
+
+
 
 
   [1]: https://0123cf.github.io/www/
