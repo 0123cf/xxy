@@ -4,7 +4,9 @@
  * email : abc_xf@126.com
  **/
 ;(function(){
-	'use strict'
+	//'use strict'
+	// TODO iphone .............
+	
 	
 	// Let ie support bind
 	if (!Function.prototype.bind) {
@@ -195,6 +197,7 @@
 						fun = true
 					}
 				}
+				console.log(cs)
 				if(!fun){
 					if(cs.length == 1){
 						inner = cs[0]
@@ -718,6 +721,7 @@
 			        function changePage(duration, translateVal) {
 			            list.style.transition = duration + "s"
 			            list.style.transform = "translateX(" + translateVal + "px)"
+			            list.style.webkitTransform = "translateX(" + translateVal + "px)"
 			        }
 					
 			        //初始化list和point
