@@ -411,6 +411,7 @@
 						innerHeight  =  parseInt(window.getComputedStyle(box).height),
 						stopGap = 28, // Stop Gap px
 						stopGapDeviation = 5
+						
 					inner.addEventListener(start,function(e){
 						if(config.body){
 							var body_ =  box,
@@ -592,8 +593,6 @@
 					
 			        //手指按下
 			        banner.addEventListener('touchstart', function (ev) {
-			            //禁止浏览器默认滑动事件
-			            ev.preventDefault()
 						
 			            startX = ev.changedTouches[0].clientX
 						
@@ -610,7 +609,9 @@
 			
 			        //手指滑动
 			        banner.addEventListener('touchmove', function (ev) {
-			        	
+			            //禁止浏览器默认滑动事件
+			            ev.preventDefault()
+			            
 			        	this.running = true
 			        	
 			            //滑动差值
@@ -628,6 +629,8 @@
 					
 			        //手指抬起
 			        banner.addEventListener('touchend', function (e) {
+			        	e.stopPropagation()
+			        	
 			        	// 手动点击
 			        	var target = e.target
 			        	target.running = true
@@ -727,7 +730,11 @@
 			        //初始化list和point
 			        function init() {
 			            //添加一组
-			            list.innerHTML += list.innerHTML
+			            if(document.body.insertAdjacentHTML){
+			            	list.insertAdjacentHTML('beforeend',list.innerHTML);
+			            }else{
+			            	list.innerHTML += list.innerHTML
+			            }
 			
 			            //设置list宽度
 			            lis = list.children
