@@ -163,6 +163,13 @@
 			 * @param {Object} d baclcall
 			 */
 			popup:function(a,b,d){
+				var cs = arguments
+				,title = '提示'
+				,inner = ''
+				,deon_text = '确认'
+				,cancal_text = '取消'
+				,fun = false
+				
 				/**
 				 * 	clear to pupup
 				 */
@@ -170,76 +177,84 @@
 					id('xxy-popup-box').parentNode.removeChild(id('xxy-popup-box'))
 				}
 				
+				// PC scroll
 				document.documentElement.style.overflow = 'hidden'
 				document.body.style.overflow = 'hidden'
-				var cs = arguments,
-					title = '提示',
-					inner = '',
-					deon_text = '确认',
-					cancal_text = '取消',
-					fun = false
 				
-				// default pupup ui
+				/**
+				 * default pupup ui
+				 */
 				var ui = (function(){
 					return this
 				}.bind(defaults.popupui))()
 				
+				/**
+				 * callback
+				 * @param {Object} a param
+				 * @param {Object} b order
+				 */
 				function callback(a,b){
-					for(var i = 0;i<a.length;i++){
-						if(typeof a[i] == 'function'){
+					for(var i = 0; i < a.length; i++) {
+						if(typeof a[i] == 'function') {
 							a[i](b)
 							break
 						}
 					}
 				}
-				for(var i = 0;i<arguments.length;i++){
-					if(typeof arguments[i] == 'function'){
-						fun = true
-					}
+				
+				// carry callback
+				for(var i = 0; i < arguments.length; i++){
+					typeof arguments[i] == 'function' ? fun = true : ''
 				}
-				console.log(cs)
+				
+				// init parmas 
 				if(!fun){
-					if(cs.length == 1){
-						inner = cs[0]
-					}else{
-						if(cs.length == 2){
+					switch(cs.length){
+						case 1:
+							inner = cs[0]
+						break
+						case 2:
 							title = cs[0]
 							inner = cs[1]
-						}
-						if(cs.length == 3){
-							console.error('参数错误！--xxy')
-						}
-						if(cs.length == 4){
+						break
+						case 4:
 							title = cs[0]
 							inner = cs[1]
 							deon_text = cs[2]
 							cancal_text = cs[3]
-						}
+						break
+						default:
+							console.error('Parameter format error！--xxy')
 					}
 				}else{
-					if(cs.length == 2){
-						inner = cs[0]
-					}else{
-						if(cs.length == 3){
+					switch(cs.length){
+						case 2:
+							inner = cs[0]
+						break
+						case 3:
 							title = cs[0]
 							inner = cs[1]
-						}
-						if(cs.length == 4){
+						break
+						case 4:
 							inner = cs[0]
 							deon_text = cs[1]
 							cancal_text = cs[2]
-						}
-						if(cs.length == 5){
+						break
+						case 5:
 							title = cs[0]
 							inner = cs[1]
 							deon_text = cs[2]
 							cancal_text = cs[3]
-						}
+						break
+						default:
+							console.error('Parameter format error！--xxy')
 					}
 				}
 				
+				// ios style
 				if(ui.skin=='ios'){
 					var stylebox = id('xxy-style-popup')
+					
 					if ('styleSheet' in id('xxy-style-popup')) {
 						stylebox.setAttribute('type', 'text/css')
 						stylebox.styleSheet.cssText = iosPopup 
@@ -248,12 +263,15 @@
 					} 
 				}
 				
+				// background Color opaqueness
 				var style = {
 					background:  'background: rgba(0,0,0,'+ui.mask+')'
 				}
-				var c = [
+				
+				var anBaseStyle = 'transition: all 100ms;-webkit-transition: all 100ms'
+				,c = [
 						'<div style="'+style.background+'" class = "xxy-popup-box" id = "xxy-popup-box">',
-							'<div class = "inner" style="transition: all 100ms">',
+							'<div class = "inner" style="',anBaseStyle,'">',
 								'<div class = "inner_box">',
 									'<div class = "xxy-popup-inner">',
 										'<div class = "xxy-popup-title"> <i class = "iconfont icon-tishi"></i> ',title,
@@ -269,23 +287,28 @@
 							'</div>',
 						'</div>'
 					].join('')
-				id('xxy-addDom').innerHTML +=  c	
-				
+				// c add to div
+				if(document.body.insertAdjacentHTML){
+	            	id('xxy-addDom').insertAdjacentHTML('beforeend',c);
+	            }else{
+	            	id('xxy-addDom').innerHTML +=  c
+	            }
+			            
+				// ios an 
 				if(ui.an){
 					var innerBox = window.parent.document.querySelector("#xxy-popup-box .inner")
-					innerBox.style.transform = 'scale(1.3,1.3)'
-					innerBox.style.webkitTransform = 'scale(1.3,1.3)'
-					innerBox.style.opacity = '0'
+					
+					innerBox.style.cssText = anBaseStyle+'opacity: 0;webkitTransform: scale(1.3,1.3);transform: scale(1.3,1.3)'
 					window.setTimeout(function(){
-						innerBox.style.opacity = '1'
-						innerBox.style.transform = 'scale(1,1)'
-						innerBox.style.webkitTransform = 'scale(1,1)'
+						innerBox.style.cssText = anBaseStyle+'opacity: 1;webkitTransform: scale(1,1);transform: scale(1,1)'
 					},50)
 				}
 				
+				// innerdiv scroll
 				id('xxy_popup_inner_print').ontouchmove = function(e){
 					e.stopPropagation()
 				}
+				
 				try{
 					window.parent.document.body.addEventListener('touchmove',preventDefaultEvent,false)	
 				}catch(e){
@@ -309,17 +332,22 @@
 					}
 					return false
 				}
+				
 				id('xxy-popup-box').onclick = function(e){
 					var e = e.target,
 						done = 'xxy-popup-done',
 						cancal = 'xxy-popup-cancal'
+						
 					if(e.id == done||e.id == cancal||e.id == 'xxy-popup-off'){
 						var child = id('xxy-popup-box')
+						
 						child.parentNode.removeChild(child)
+						
 						window.parent.document.body.removeEventListener('touchmove',preventDefaultEvent,false)
-						document.documentElement.style.overflow = 'initial'
 						// body is set height , height not 100%
+						document.documentElement.style.overflow = 'initial'
 						document.body.style.overflow = 'initial'
+						// callback
 						if(e.id == done){
 							callback(cs,0)			
 						}
@@ -327,42 +355,25 @@
 							callback(cs,1)	
 						}
 					}
+					
 				}
+				
 			},
 			
 			/**
 			 * alert
 			 */
-			alert: function(a,b,f){
-				var callBack = false
-				for(var i = 0;i<arguments.length;i++){
-					if(typeof a[i] == 'function'){
-						callBack = true
-					}
-				}
-				try{
-					if(callBack){
-						xxy.popup(a,b,f)
-					}else{
-						xxy.popup(a,b)
-					}
-				}catch(e){
-					if(callBack){
-						xxy.popup(a,f)
-					}else{
-						xxy.popup(a)
-					}
-				}
-				var button_  =  window.parent.document.querySelector('#xxy-addDom #xxy-popup-cancal'),
-					button_child2 = window.parent.document.querySelector('#xxy-addDom .xxy-popup-box button'),
-					off_ = id('xxy-popup-off').style.display = 'none'
-					
-				button_.style.width = '100%'
-				button_.innerHTML = '确认'
-				button_.style.marginLeft = 'auto'
-				button_.style.marginRight = 'auto'
-				button_.style.display = 'block'
+			alert: function(){
+				var fun = false
+				this.popup.apply(this, [].slice.call(arguments))
+				
+				var button_  =  window.parent.document.querySelector('#xxy-addDom #xxy-popup-cancal')
+				,button_child2 = window.parent.document.querySelector('#xxy-addDom .xxy-popup-box button')
+				
+				button_.innerText = '确认'
+				button_.style.cssText = 'display: block;marginLeft: auto;marginRight: auto;width: 100%'
 				button_child2.style.display = 'none'
+				id('xxy-popup-off').style.display = 'none'
 			},
 			
 			/**
@@ -374,9 +385,10 @@
 					removeToast.parentNode.removeChild(removeToast)
 					this.toastRemveTime&&window.clearTimeout(this.toastRemveTime)
 				}
-				var time = (arguments[1]?b:2500)+1000,
-					toast_div = document.createElement('div'),
-					toast_node =document.createTextNode(a)
+				var time = (arguments[1]?b:2500)+1000
+					,toast_div = document.createElement('div')
+					,toast_node =document.createTextNode(a)
+					
 				toast_div.appendChild(toast_node)
 				toast_div.id = "xxy-toast"
 				toast_div.className = "xxy-toast"
