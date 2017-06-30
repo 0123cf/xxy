@@ -88,13 +88,14 @@
 	// create xxy
 	window.xxy = (function (){
 		// defaults config
-		var defaults = {},
-			// popup configuer
-			popupui = {
-				skin: void 0,
-				mask: .5,
-				an: false
-			}
+		var defaults = {}
+		// popup configuer
+		,popupui = {
+			skin: void 0,
+			mask: .5,
+			an: false
+		}
+		,addDomName = 'xxy-addDom'
 			
 		defaults = {}
 		defaults.popupui = popupui
@@ -287,6 +288,7 @@
 							'</div>',
 						'</div>'
 					].join('')
+					
 				// c add to div
 				if(document.body.insertAdjacentHTML){
 	            	id('xxy-addDom').insertAdjacentHTML('beforeend',c);
@@ -333,7 +335,7 @@
 					return false
 				}
 				
-				id('xxy-popup-box').onclick = function(e){
+				id('xxy-popup-box').addEventListener('click',function(e){
 					var e = e.target,
 						done = 'xxy-popup-done',
 						cancal = 'xxy-popup-cancal'
@@ -355,8 +357,7 @@
 							callback(cs,1)	
 						}
 					}
-					
-				}
+				})
 				
 			},
 			
@@ -380,30 +381,27 @@
 			 * toast
 			 */
 			toast: function(a,b){
-				if(id('xxy-toast')){
-					var removeToast = id('xxy-toast')
+				var time = (arguments[1]?b:2500)+1000
+				,id_name = 'xxy-toast'
+				,toast_div = document.createElement('div')
+				,toast_node =document.createTextNode(a)
+				
+				// remove ement
+				if(id(id_name)){
+					var removeToast = id(id_name)
 					removeToast.parentNode.removeChild(removeToast)
 					this.toastRemveTime&&window.clearTimeout(this.toastRemveTime)
 				}
-				var time = (arguments[1]?b:2500)+1000
-					,toast_div = document.createElement('div')
-					,toast_node =document.createTextNode(a)
-					
+				
+				// create ement
 				toast_div.appendChild(toast_node)
-				toast_div.id = "xxy-toast"
-				toast_div.className = "xxy-toast"
-				id('xxy-addDom').appendChild(toast_div)
+				toast_div.id = id_name
+				toast_div.className = id_name
+				
+				// add new && to remove ement
+				id(addDomName).appendChild(toast_div)
 				this.toastRemveTime = window.setTimeout(function(){
-					
-					var child = id('xxy-toast')
-					
-					child.style.background = 'rgba(0,0,0,0)'
-					child.style.color = 'rgba(0,0,0,0)'
-					
-					window.setTimeout(function(){
-						child.parentNode.removeChild(child)
-					},1000)
-					
+					id(id_name).parentNode.removeChild(id(id_name))
 				},time)
 			},
 			
@@ -412,40 +410,22 @@
 			 */
 			touch: function xxyDown(){	
 				var global =  {}
+					,start =   "touchstart"
+					,move =   "touchmove"
+					,end =   "touchend"
+					
 				xxyDown.bind(global)
-				var	start =   "touchstart",
-					move =   "touchmove",
-					end =   "touchend"
+					
 				function core(box,config){
 					if(!window.getComputedStyle)return false
-					var view  =  box.querySelector('.view'),
-						inner  =  box.querySelector('.inner'),
-						innerHeight  =  parseInt(window.getComputedStyle(box).height),
-						stopGap = 28, // Stop Gap px
-						stopGapDeviation = 5
-						
+					
+					var view  =  box.querySelector('.view')
+						,inner  =  box.querySelector('.inner')
+						,innerHeight  =  parseInt(window.getComputedStyle(box).height)
+						,stopGap = 28 // Stop Gap px
+						,stopGapDeviation = 5
+					
 					inner.addEventListener(start,function(e){
-						if(config.body){
-							var body_ =  box,
-								play_ =  false
-							!function qipao(box){
-								if(box.className.indexOf('xxy-down-viewbox') != -1){
-									if(box != body_){
-										play_ =  true
-									}
-								} else{
-									if(!box||box.tagName == 'BODY'){
-										return false
-									}else{
-										var boxParendNode = box.parentNode
-										qipao(boxParendNode)
-									}
-								}
-							}(e.target)
-							if(play_){
-								return false
-							}
-						}
 						this.style.transitionDuration  =  '0ms'
 						var touch  =  e.touche||e.touches[0],
 							top  =  view.scrollTop,
@@ -459,51 +439,28 @@
 					},false)
 					
 					inner.addEventListener(move,function(e){
-						if(config.body){
-							var body_ =  box,
-								play_ =  false
-							!function qipao(box){
-								if(box.className.indexOf('xxy-down-viewbox') != -1){
-									if(box != body_){
-										play_ =  true
-									}
-								} else{
-									if(!box||box.tagName == 'BODY'){
-										return false
-									}else{
-										var boxParendNode = box.parentNode
-										qipao(boxParendNode)
-									}
-								}
-							}(e.target)
-							if(play_){
-								return false
-							}
-						}
-						var touch =  e.touche||e.touches[0],
-							top =  view.scrollTop,
-							startY =  this.startSite.y,
-							moveY =  touch.clientY//get Y-axis value
+						var touch =  e.touche||e.touches[0]
+						,top =  view.scrollTop
+						,startY =  this.startSite.y
+						,moveY =  touch.clientY//get Y-axis value
+							
 						if(moveY>startY){
 							// Slide down to top execution
-							if(top <= 0){
-								e.preventDefault()
-								if(config.move){
-									this.direction =  'down'
-									var startTop =  this.startTop,
-										gap =  moveY - startY,
-										topGap =  (gap-gap/1.37) - this.startTop
-									if(topGap>stopGap+stopGapDeviation){
-										view.setAttribute('data-befor','释放立即刷新')
-									}else{
-										view.setAttribute('data-befor','下拉刷新')
-									}
-									this.style.transform =  'translate3d(0, '+topGap+'px, 0)'
-									this.topGap = topGap
-								}
-							}else{
-								return false
+							if(top >1 ) return false
+							e.preventDefault()
+							
+							if(config.move){
+								var startTop =  this.startTop
+								,gap =  moveY - startY
+								,topGap =  (gap-gap/1.37) - this.startTop
+								,moveTop = topGap>stopGap+stopGapDeviation
+									
+								moveTop ? view.setAttribute('data-befor','释放立即刷新') : view.setAttribute('data-befor','下拉刷新')
+								this.style.transform =  'translate3d(0, '+topGap+'px, 0)'
+								this.topGap = topGap
+								this.direction =  'down'
 							}
+							
 						}else{
 							var boxHeight  =  config.body ? window.innerHeight : innerHeight
 							
