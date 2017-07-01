@@ -4,9 +4,8 @@
  * email : abc_xf@126.com
  **/
 ;(function(){
-	//'use strict'
-	// TODO iphone .............
-	
+	'use strict'
+	// TODO iphone 'use strict'.............
 	
 	// Let ie support bind
 	if (!Function.prototype.bind) {
@@ -44,8 +43,8 @@
 		if(Boolean(id(str))){
 			return false
 		}
-		var tag = window.parent.document.createElement('style')
 		
+		var tag = window.parent.document.createElement('style')
 		tag.id = str
 		if ('styleSheet' in tag) {
 			tag.setAttribute('type', 'text/css')
@@ -75,10 +74,9 @@
 	
 	// styles
 	var popup = '#xxy-addDom .xxy-popup-box{position:fixed;top:0;left:0;z-index:99;z-index:99999999;overflow:hidden;width:100%;height:100%;background:rgba(0,0,0,.5);font-size:14px}#xxy-addDom .xxy-popup-box .inner{position:absolute;top:0;right:0;bottom:0;left:0;margin:auto;width:80%;height:0;max-width:280px;background:#fff;color:#646464}#xxy-addDom .xxy-popup-box .inner .inner_box{border:.01px solid #adadad;background:#fff;-webkit-transform:translateY(-50%);transform:translateY(-50%);-ms-transform:translateY(-50%)}#xxy-addDom .xxy-popup-box .xxy-popup-title{width:100%;border-bottom:1px solid #e8e8e8;background-color:#eee;color:#646464;text-align:left;text-indent:.7em;font-size:13px;line-height:2.1em}#xxy-addDom .xxy-popup-box .print{overflow:auto;padding:15px 20px 0;max-height:250px}#xxy-addDom .xxy-popup-box .or{margin:0 auto;width:90%}#xxy-addDom .xxy-popup-box button{border-radius:0px;margin:1em 0;padding:.6em 0;width:48%;border-width:0;border-radius:.4em;color:#fff}#xxy-addDom .xxy-popup-box .xxy-popup-done{background:#febb2c}#xxy-addDom .xxy-popup-box .xxy-popup-cancal{margin-left:4%;background:#eb4b27}#xxy-addDom .xxy-popup-box .off{float:right;margin-right:.4em;font-size:1.3em}#xxy-addDom .print_inner p span:nth-child(1){text-align:right}#xxy-addDom .print_inner p span:nth-child(2){text-align:center}#xxy-addDom .print_inner span{display:inline-block;width:48%}#xxy-addDom .print_inner p .important{color:#febb2c}'
-	var toast = '#xxy-addDom .xxy-toast{text-align: center;opacity:1;transition: all 1000ms;-webkit-transition: all 1000ms;position:fixed;bottom:2em;left:50%;padding:.2em 1em;border-radius:1em;background:rgba(0,0,0,.6);color:#fff;font-size:15px;line-height:1.7em;-webkit-transition-timing-function:ease;-webkit-transition-duration:2s;-webkit-transition-property:color;-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);-ms-transform:translateX(-50%) translateY(-50%);min-width:10em}'
-	var touch = '.xxy-down-viewbox{position:relative;overflow:hidden;margin:auto;min-width:200px;min-height:200px;box-shadow:2px 2px 10px 1px rgba(0,0,0,.2);-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-webkit-backface-visibility:hidden;-ms-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000;-ms-perspective:1000;perspective:1000}.xxy-down-viewbox>div{overflow:auto;width:100%;height:100%;border:0 solid transparent;background:#eee}.xxy-down-viewbox>div:before{top:0;content:attr(data-befor)}.xxy-down-viewbox>div:after,.xxy-down-viewbox>div:before{position:absolute;width:100%;color:#646464;text-align:center}.xxy-down-viewbox>div:after{bottom:5px;content:attr(data-after)}.xxy-down-viewbox>div>*{position:relative;z-index:1;background:#fff}'
-	
-	var iosPopup = '#xxy-addDom .xxy-popup-box{position:fixed;top:0;left:0;z-index:99;z-index:99999999;overflow:hidden;width:100%;height:100%;background:rgba(0,0,0,.5);font-size:14px}#xxy-addDom .xxy-popup-box .inner{position:absolute;top:0;right:0;bottom:0;left:0;margin:auto;width:80%;height:0;max-width:280px;background:rgba(255,255,255,.95)}#xxy-addDom .xxy-popup-box .inner .inner_box{background:#fff;-webkit-transform:translateY(-50%);transform:translateY(-50%);-ms-transform:translateY(-50%);border-radius:13px}#xxy-addDom .xxy-popup-box .xxy-popup-title{font-size:18px;font-weight:500;text-align:center;padding-top:5px;line-height:2em}#xxy-addDom .xxy-popup-box .print{overflow:auto;padding:0 15px 15px 15px;max-height:250px}#xxy-addDom .xxy-popup-box .or{margin:0 auto;border-bottom-left-radius:13px;border-bottom-right-radius:13px;overflow:hidden}#xxy-addDom .xxy-popup-box button{border-radius:0px;;border-width:0;color:#007aff;background:#fff;background:rgba(255,255,255,.95);font-size:17px;line-height:44px;position:relative;overflow:hidden;box-sizing:border-box;width:50%;height:44px;padding:0 5px;cursor:pointer;text-align:center;white-space:nowrap;text-overflow:ellipsis;color:#007aff;background:rgba(255,255,255,.95);-webkit-box-flex:1;border-top:1px solid #cdcdcd}#xxy-addDom .xxy-popup-box .xxy-popup-cancal{border-left:1px solid #cdcdcd}#xxy-addDom .xxy-popup-box .off{float:right;margin-right:.4em;font-size:1.3em}#xxy-addDom .print_inner p span:nth-child(1){text-align:right}#xxy-addDom .print_inner p span:nth-child(2){text-align:center}#xxy-addDom .print_inner span{display:inline-block;width:48%}#xxy-addDom .print_inner p .important{color:#febb2c}';
+	,toast = '#xxy-addDom .xxy-toast{text-align: center;opacity:1;transition: all 1000ms;-webkit-transition: all 1000ms;position:fixed;bottom:2em;left:50%;padding:.2em 1em;border-radius:1em;background:rgba(0,0,0,.6);color:#fff;font-size:15px;line-height:1.7em;-webkit-transition-timing-function:ease;-webkit-transition-duration:2s;-webkit-transition-property:color;-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);-ms-transform:translateX(-50%) translateY(-50%);min-width:10em}'
+	,touch = '.xxy-down-viewbox{position:relative;overflow:hidden;margin:auto;min-width:200px;min-height:200px;box-shadow:2px 2px 10px 1px rgba(0,0,0,.2);-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-webkit-backface-visibility:hidden;-ms-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000;-ms-perspective:1000;perspective:1000}.xxy-down-viewbox>div{overflow:auto;width:100%;height:100%;border:0 solid transparent;background:#eee}.xxy-down-viewbox>div:before{top:0;content:attr(data-befor)}.xxy-down-viewbox>div:after,.xxy-down-viewbox>div:before{position:absolute;width:100%;color:#646464;text-align:center}.xxy-down-viewbox>div:after{bottom:5px;content:attr(data-after)}.xxy-down-viewbox>div>*{position:relative;z-index:1;background:#fff}'
+	,iosPopup = '#xxy-addDom .xxy-popup-box{position:fixed;top:0;left:0;z-index:99;z-index:99999999;overflow:hidden;width:100%;height:100%;background:rgba(0,0,0,.5);font-size:14px}#xxy-addDom .xxy-popup-box .inner{position:absolute;top:0;right:0;bottom:0;left:0;margin:auto;width:80%;height:0;max-width:280px;background:rgba(255,255,255,.95)}#xxy-addDom .xxy-popup-box .inner .inner_box{background:#fff;-webkit-transform:translateY(-50%);transform:translateY(-50%);-ms-transform:translateY(-50%);border-radius:13px}#xxy-addDom .xxy-popup-box .xxy-popup-title{font-size:18px;font-weight:500;text-align:center;padding-top:5px;line-height:2em}#xxy-addDom .xxy-popup-box .print{overflow:auto;padding:0 15px 15px 15px;max-height:250px}#xxy-addDom .xxy-popup-box .or{margin:0 auto;border-bottom-left-radius:13px;border-bottom-right-radius:13px;overflow:hidden}#xxy-addDom .xxy-popup-box button{border-radius:0px;;border-width:0;color:#007aff;background:#fff;background:rgba(255,255,255,.95);font-size:17px;line-height:44px;position:relative;overflow:hidden;box-sizing:border-box;width:50%;height:44px;padding:0 5px;cursor:pointer;text-align:center;white-space:nowrap;text-overflow:ellipsis;color:#007aff;background:rgba(255,255,255,.95);-webkit-box-flex:1;border-top:1px solid #cdcdcd}#xxy-addDom .xxy-popup-box .xxy-popup-cancal{border-left:1px solid #cdcdcd}#xxy-addDom .xxy-popup-box .off{float:right;margin-right:.4em;font-size:1.3em}#xxy-addDom .print_inner p span:nth-child(1){text-align:right}#xxy-addDom .print_inner p span:nth-child(2){text-align:center}#xxy-addDom .print_inner span{display:inline-block;width:48%}#xxy-addDom .print_inner p .important{color:#febb2c}';
 	
 	// add style
 	addStyle('xxy-style-popup',popup)
@@ -88,28 +86,24 @@
 	// create xxy
 	window.xxy = (function (){
 		// defaults config
-		var defaults = {}
-		// popup configuer
-		,popupui = {
-			skin: void 0,
-			mask: .5,
-			an: false
+		var defaults = {
+			popupui: {
+				skin: void 0,
+				mask: .5,
+				an: false
+			}
 		}
-		,addDomName = 'xxy-addDom'
-			
-		defaults = {}
-		defaults.popupui = popupui
-		
 		/**
 		 * preventDefault Prevent mobile end events from bubbling
 		 * For example, trigger higher div scroll
 		 */
-		function preventDefaultEvent(e){
+		,preventDefaultEvent = function(e){
 			e.preventDefault()
 		}
+		,addDomName = 'xxy-addDom'
 		
-		
-		var _init= {
+		// init return api
+		,_init= {
 			/**
 			 * mixin
 			 * param {Object} to 
@@ -170,24 +164,29 @@
 				,deon_text = '确认'
 				,cancal_text = '取消'
 				,fun = false
+				/**
+				 * default pupup ui
+				 */
+				,ui = (function(){
+						return this
+					}.bind(defaults.popupui))()
+				,box_name = 'xxy-popup-box'
+				,id_done = 'xxy-popup-done'
+				,id_cancal = 'xxy-popup-cancal'
+				,id_off = 'xxy-popup-off'
+				,anBaseStyle = 'transition: all 100ms;-webkit-transition: all 100ms'
 				
 				/**
 				 * 	clear to pupup
 				 */
-				if(Boolean(id('xxy-popup-box'))){
-					id('xxy-popup-box').parentNode.removeChild(id('xxy-popup-box'))
+				if(Boolean(id(box_name))) {
+					id(box_name).parentNode.removeChild(id(box_name))
 				}
 				
 				// PC scroll
 				document.documentElement.style.overflow = 'hidden'
 				document.body.style.overflow = 'hidden'
 				
-				/**
-				 * default pupup ui
-				 */
-				var ui = (function(){
-					return this
-				}.bind(defaults.popupui))()
 				
 				/**
 				 * callback
@@ -264,14 +263,15 @@
 					} 
 				}
 				
+				/* 
+				 * com _var
+				 */
 				// background Color opaqueness
 				var style = {
 					background:  'background: rgba(0,0,0,'+ui.mask+')'
 				}
-				
-				var anBaseStyle = 'transition: all 100ms;-webkit-transition: all 100ms'
 				,c = [
-						'<div style="'+style.background+'" class = "xxy-popup-box" id = "xxy-popup-box">',
+						'<div style="'+style.background+'" class = "'+box_name+'" id = "'+box_name+'">',
 							'<div class = "inner" style="',anBaseStyle,'">',
 								'<div class = "inner_box">',
 									'<div class = "xxy-popup-inner">',
@@ -291,15 +291,17 @@
 					
 				// c add to div
 				if(document.body.insertAdjacentHTML){
-	            	id('xxy-addDom').insertAdjacentHTML('beforeend',c);
+	            	id(addDomName).insertAdjacentHTML('beforeend',c);
 	            }else{
-	            	id('xxy-addDom').innerHTML +=  c
+	            	id(addDomName).innerHTML +=  c
 	            }
-			            
-				// ios an 
+			    
+			    // create Dom then _var
+				var box_child = id(box_name)
+			    ,innerBox = window.parent.document.querySelector("#xxy-popup-box .inner")
+				
+				// ios an
 				if(ui.an){
-					var innerBox = window.parent.document.querySelector("#xxy-popup-box .inner")
-					
 					innerBox.style.cssText = anBaseStyle+'opacity: 0;webkitTransform: scale(1.3,1.3);transform: scale(1.3,1.3)'
 					window.setTimeout(function(){
 						innerBox.style.cssText = anBaseStyle+'opacity: 1;webkitTransform: scale(1,1);transform: scale(1,1)'
@@ -315,8 +317,7 @@
 					window.parent.document.body.addEventListener('touchmove',preventDefaultEvent,false)	
 				}catch(e){
 					function iexx(){
-						var child = id('xxy-popup-box')
-						child.parentNode.removeChild(child)
+						box_child.parentNode.removeChild(box_child)
 						try{
 							window.parent.document.body.removeEventListener('touchmove',preventDefaultEvent,false)
 						}catch(e){}
@@ -324,38 +325,39 @@
 						document.documentElement.style.overflow = 'auto'
 					}
 					/*ie*/
-					id('xxy-popup-done').onclick = function(){
+					id(id_done).onclick = function(){
 						callback(cs,0)	
 						iexx()
 					}
-					id('xxy-popup-cancal').onclick = function(){
+					id(id_done).onclick = function(){
 						callback(cs,1)	
 						iexx()
 					}
 					return false
 				}
 				
-				id('xxy-popup-box').addEventListener('click',function(e){
-					var e = e.target,
-						done = 'xxy-popup-done',
-						cancal = 'xxy-popup-cancal'
-						
-					if(e.id == done||e.id == cancal||e.id == 'xxy-popup-off'){
-						var child = id('xxy-popup-box')
-						
-						child.parentNode.removeChild(child)
-						
+				/* 
+				 * End popup
+				 */
+				id(box_name).addEventListener('click',function(e){
+					var e = e.target
+					
+					if(e.id == id_done||e.id == id_cancal||e.id == id_off){
+						/**
+						 * reload
+						 */
+						box_child.parentNode.removeChild(box_child)
 						window.parent.document.body.removeEventListener('touchmove',preventDefaultEvent,false)
-						// body is set height , height not 100%
+						// 'initial' body is set height , height not 100%
 						document.documentElement.style.overflow = 'initial'
 						document.body.style.overflow = 'initial'
-						// callback
-						if(e.id == done){
-							callback(cs,0)			
-						}
-						if(e.id == cancal){
-							callback(cs,1)	
-						}
+						
+						/*
+						 * callback
+						 * @params cs callback params
+						 */
+						e.id == id_done && callback(cs,0)	
+						e.id == id_cancal && callback(cs,1)
 					}
 				})
 				
@@ -365,7 +367,6 @@
 			 * alert
 			 */
 			alert: function(){
-				var fun = false
 				this.popup.apply(this, [].slice.call(arguments))
 				
 				var button_  =  window.parent.document.querySelector('#xxy-addDom #xxy-popup-cancal')
@@ -415,22 +416,31 @@
 					,end =   "touchend"
 					
 				xxyDown.bind(global)
-					
+				
+				/**
+				 * cors 
+				 * @param {Object} box Element
+				 * @param {Object} config Config
+				 */
 				function core(box,config){
-					if(!window.getComputedStyle)return false
+					if(!window.getComputedStyle)return false// prevent IE Error
 					
 					var view  =  box.querySelector('.view')
-						,inner  =  box.querySelector('.inner')
-						,innerHeight  =  parseInt(window.getComputedStyle(box).height)
-						,stopGap = 28 // Stop Gap px
-						,stopGapDeviation = 5
+					,inner  =  box.querySelector('.inner')
+					,innerHeight  =  parseInt(window.getComputedStyle(box).height)
+					,stopGap = 28 // Stop Gap px
+					,stopGapDeviation = 5
 					
+					// touchstart
 					inner.addEventListener(start,function(e){
+						var touch  =  e.touche||e.touches[0]
+						,top  =  view.scrollTop
+						,height  =  window.getComputedStyle(this).height
+						,domHeight  =  window.parseInt(height)
+						
+						// prevent transition
 						this.style.transitionDuration  =  '0ms'
-						var touch  =  e.touche||e.touches[0],
-							top  =  view.scrollTop,
-							height  =  window.getComputedStyle(this).height,
-							domHeight  =  window.parseInt(height)
+						// set origin value
 						this.startTop  =  top
 						this.startSite  =  {
 							y: touch.clientY
@@ -438,58 +448,60 @@
 						this.domHeight  =  domHeight
 					},false)
 					
+					/*
+					 * touchmove
+					 * The new browser (mobile terminal) sets the style for the elements and automatically optimizes them, so there is no need to split them
+					 */
 					inner.addEventListener(move,function(e){
 						var touch =  e.touche||e.touches[0]
 						,top =  view.scrollTop
 						,startY =  this.startSite.y
 						,moveY =  touch.clientY//get Y-axis value
-							
+						,boxHeight  =  config.body ? window.innerHeight : innerHeight
+						,gap  =  moveY-startY
+						,move_gap = (gap-gap/1.37)
+						,topGap = void 0
+						,moveTop = void 0
+						
+						// Slide down to top execution
 						if(moveY>startY){
-							// Slide down to top execution
-							if(top >1 ) return false
+							if(top >1 || !config.move) return false
 							e.preventDefault()
 							
-							if(config.move){
-								var startTop =  this.startTop
-								,gap =  moveY - startY
-								,topGap =  (gap-gap/1.37) - this.startTop
-								,moveTop = topGap>stopGap+stopGapDeviation
-									
-								moveTop ? view.setAttribute('data-befor','释放立即刷新') : view.setAttribute('data-befor','下拉刷新')
-								this.style.transform =  'translate3d(0, '+topGap+'px, 0)'
-								this.topGap = topGap
-								this.direction =  'down'
-							}
+							topGap =  move_gap - this.startTop
+							moveTop = topGap>stopGap+stopGapDeviation
+							// set
+							moveTop ? view.setAttribute('data-befor','释放立即刷新') : view.setAttribute('data-befor','下拉刷新')
+							this.style.transform =  'translate3d(0, '+topGap+'px, 0)'
+							this.topGap = topGap
+							this.direction =  'down'
 							
-						}else{
-							var boxHeight  =  config.body ? window.innerHeight : innerHeight
-							
+						// Slide to bottom execution	
+						}else if(top+boxHeight+1 >= this.domHeight){
 							// Pull to the bottom to perform (scroll distance plus auto height equal to UL total height)
-							if(top+boxHeight+1 >= this.domHeight){
-								e.preventDefault()
-								if(config.move){
-									this.direction  =  'up'
-									var gap  =  moveY-startY,
-										v = (gap-gap/1.37)
-										
-									if(-v>stopGap+stopGapDeviation){
-										view.setAttribute('data-after','释放立即刷新')
-									}else{
-										view.setAttribute('data-after','上拉加载')
-									}
-									this.style.transform  =  'translate3d(0, '+v+'px, 0)'
-									this.topGap = -v
-									
-								}
+							e.preventDefault()
+							if(!config.move)return false
+							
+							this.direction  =  'up'
+							// set
+							if(-move_gap>stopGap+stopGapDeviation){
+								view.setAttribute('data-after','释放立即刷新')
 							}else{
-								return false
+								view.setAttribute('data-after','上拉加载')
 							}
+							this.style.transform  =  'translate3d(0, '+move_gap+'px, 0)'
+							this.topGap = -move_gap
 						}
+						
 					},false)
 					
+					/* 
+					 * touchend
+					 */
 					inner.addEventListener(end,function(e){
-						var th = this,
-							direction  =  this.direction
+						var th = this
+						,direction  =  this.direction
+						,v = void 0
 							
 						e.stopPropagation()
 						if(!this.direction)return false
@@ -501,15 +513,9 @@
 							th.direction  =  undefined
 						}
 						
-						// refresh
+						// update data to Dom Element
 						function reloading(){
-							var v = void 0
-							
-							if(direction=='up'){
-								v = -stopGap
-							}else{
-								v = stopGap
-							}
+							v = direction=='up' ? -stopGap :stopGap
 							th.style.transitionDuration  =  '500ms'
 							th.style.transform  =  'translate3d(0, '+v+'px, 0)'
 						}
@@ -520,18 +526,14 @@
 							return false
 						}
 						
-						// tips
+						// update view state
 						view.setAttribute('data-befor','正在刷新..')
 						view.setAttribute('data-after','正在刷新..')
 						
 						// backcall
-						if(direction == 'down'){
-							// sild down Refresh
-							config.down&&config.down()
-						}else if(direction == 'up'){
-							// sild up reloading
-							config.up&&config.up()
-						}
+						direction == 'down' && config.down &&config.down()// sild down Refresh
+						direction == 'up' && config.up && config.up()// sild up reloading
+						
 						// refresh
 						reloading()
 						
@@ -560,47 +562,47 @@
 					
 					banner.running = false
 					
-			        //手指按下
+			        //touchstart
 			        banner.addEventListener('touchstart', function (ev) {
 						
 			            startX = ev.changedTouches[0].clientX
 						
-			            //关闭过渡效果
+			            //close transition
 			            list.style.transition = "0s"
 						
-			            //关闭自动轮播
+			            //close auto timer
 			            clearInterval(tid)
 						
-			            //无缝滑屏 改变index
+			            //header footer Lint  update Index
 			            changeIndex()
 			            
 			        })
 			
-			        //手指滑动
+			        //touchmove
 			        banner.addEventListener('touchmove', function (ev) {
-			            //禁止浏览器默认滑动事件
+			            //preventDefault
 			            ev.preventDefault()
 			            
 			        	this.running = true
 			        	
-			            //滑动差值
+			            //gap
 			            var dis = ev.changedTouches[0].clientX - startX
 						
-			            //当前list总平移长度
+			            //list mobile width
 			            translateX = rootWidth * index + dis
 			            
-			            //响应list滑动平移
+			            //pull mobile Width
 			            changePage(0, translateX)
 			            
-			            // 发布
+			            // publish
 						config.self.gap(dis)
 			        })
 					
-			        //手指抬起
+			        //touchend
 			        banner.addEventListener('touchend', function (e) {
 			        	e.stopPropagation()
 			        	
-			        	// 手动点击
+			        	// get left right click element
 			        	var target = e.target
 			        	target.running = true
 			        	;(function qipao(box){
@@ -629,16 +631,15 @@
 			        	}
 			        	if(!target.running)return false
 			        	
-			        	/**
-			        	 * 滑动
-			        	 */
-			            //根据滑动长度求索引
+			            /*
+			             * set index (Index is slider site index)
+			             */
 			            if(this.running){
 			            	index - translateX / rootWidth > .2 ? index-- : 
 							index - translateX / rootWidth < -.2 ? index++ : ''
 						}
 			            
-			            //越界判断
+			            //modify beyond
 			            if (index < 0) {
 			                index = 0
 			            } else if (index > lis.length - 1) {
@@ -652,15 +653,16 @@
 			        	this.running = false
 			        })
 			        
-			        
-			       
-			        //自动轮播
+			        /**
+			         * autoPlay
+			         */
 			        function autoPlay() {
 			            tid = setInterval(function () {
 			                changeIndex()
 			                changePage(0, rootWidth * index)
 							
-			                //延时执行，为了让页面切换完毕
+			                // Delay execution, in order to make the page switch finished
+			                // 延时执行，为了让页面切换完毕
 			                setTimeout(function () {
 			                    index++
 			                    changePage(.3, rootWidth * index)
@@ -670,18 +672,22 @@
 			            }, config.time)
 			        }
 					
-			        //更改索引 实现无缝滑屏
+			        /**
+			         * changeIndex publish set index (Index is slider site index)
+			         */
 			        function changeIndex() {
 			            if (index == 0) {
-			                //当显示第一张图片 切换到下一组的第一张
+			            	// When displaying the first picture, switch to the first of the next group
+			                // 当显示第一张图片 切换到下一组的第一张
 			                index = points.length
 			            } else if (index == lis.length - 1) {
-			                //当显示最后一张 切换到上一组的最后一张
+			            	// When you display the last one, switch to the last of the previous group
+			                // 当显示最后一张 切换到上一组的最后一张
 			                index = points.length - 1
 			            }
 			        }
 					
-			        //设置小圆点
+			        // set dot
 			        function changePoint() {
 			            for (var i = 0 ;i < points.length;i++) {
 			                points[i].classList.remove('active')
@@ -689,32 +695,38 @@
 			            points[index % (points.length)].classList.add('active')
 			        }
 					
-			        //滑动页面 平移list
+			        /**
+			         * move list
+			         * @param {Object} duration
+			         * @param {Object} translateVal
+			         */
 			        function changePage(duration, translateVal) {
 			            list.style.transition = duration + "s"
 			            list.style.transform = "translateX(" + translateVal + "px)"
 			            list.style.webkitTransform = "translateX(" + translateVal + "px)"
 			        }
 					
-			        //初始化list和point
+			        /*
+			         * init list And point
+			         */
 			        function init() {
-			            //添加一组
+			            // add A group  添加一组
 			            if(document.body.insertAdjacentHTML){
 			            	list.insertAdjacentHTML('beforeend',list.innerHTML);
 			            }else{
 			            	list.innerHTML += list.innerHTML
 			            }
 			
-			            //设置list宽度
+			            // set List width 
 			            lis = list.children
 			            list.style.width = lis.length + "00%"
 			
-			            //设置li宽度
+			            // set LI width 
 			            for (var i = 0; i < lis.length; i++) {
 			                lis[i].style.width = 100 / lis.length + "%"
 			            }
 			
-			            //创建point div
+			            // creact point div
 			            var pointDiv = document.createElement("div")
 			            pointDiv.setAttribute("id", "point")
 			            for (var i = 0; i < lis.length / 2; i++) {
@@ -730,7 +742,7 @@
 				}
 				
 				/**
-				 * 入口 
+				 * import Fun 
 				 */
 				function main(e,config){
 					if(!config){
