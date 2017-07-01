@@ -4,7 +4,7 @@
  * email : abc_xf@126.com
  **/
 ;(function(){
-	'use strict'
+	//'use strict'
 	// TODO iphone 'use strict'.............
 	
 	// Let ie support bind
