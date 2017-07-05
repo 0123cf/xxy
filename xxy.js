@@ -174,7 +174,7 @@
 				,id_done = 'xxy-popup-done'
 				,id_cancal = 'xxy-popup-cancal'
 				,id_off = 'xxy-popup-off'
-				,anBaseStyle = 'transition: all 100ms;-webkit-transition: all 100ms'
+				,anBaseStyle = 'transition: all 100ms;-webkit-transition: all 300ms'
 				
 				/**
 				 * 	clear to pupup
@@ -268,11 +268,11 @@
 				 */
 				// background Color opaqueness
 				var style = {
-					background:  'background: rgba(0,0,0,'+ui.mask+')'
+					background:  'background: rgba(0,0,0,'+ui.mask+');'
 				}
 				,c = [
 						'<div style="'+style.background+'" class = "'+box_name+'" id = "'+box_name+'">',
-							'<div class = "inner" style="',anBaseStyle,'">',
+							'<div class = "inner" style="',anBaseStyle,'opacity: 0;webkitTransform: scale(1.2,1.2);transform: scale(1.2,1.2)">',
 								'<div class = "inner_box">',
 									'<div class = "xxy-popup-inner">',
 										'<div class = "xxy-popup-title"> <i class = "iconfont icon-tishi"></i> ',title,
@@ -302,7 +302,6 @@
 				
 				// ios an
 				if(ui.an){
-					innerBox.style.cssText = anBaseStyle+'opacity: 0;webkitTransform: scale(1.3,1.3);transform: scale(1.3,1.3)'
 					window.setTimeout(function(){
 						innerBox.style.cssText = anBaseStyle+'opacity: 1;webkitTransform: scale(1,1);transform: scale(1,1)'
 					},50)
