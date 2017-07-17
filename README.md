@@ -167,6 +167,8 @@ baner.on('gap',function(e){
 })
 ```
 
+支持弹性滚动，例子： http://yx.mysy.vip/test/%E5%8E%BB%E5%93%AA%E5%84%BF%E9%80%80%E7%A5%A8/
+
 
 
 
@@ -175,7 +177,7 @@ baner.on('gap',function(e){
 # History record：
 
 - 兼容了iframe在苹果的出现fiexd问题。
-- 增加移动端的支持（包括ie8）[ie8里面的回调依然可用]
+- 增加移动端的支持（包括ie8）
 - 设置内容最高值，阻止冒泡，超出可滑动滚动。
 - 添加alert函数
 - 添加支持多指触控，上拉加载，下拉刷新。
