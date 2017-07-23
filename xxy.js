@@ -6,8 +6,10 @@
 ;(function(){
 	//'use strict'
 	// TODO iphone 'use strict'.............
+	// 苹果加严格模式后会无法运行，有知道的同学提交个Pr，谢谢
 	
 	// Let ie support bind
+	// 主要为了Ie能够使用弹窗，不然移动端确实不需要兼容bind
 	if (!Function.prototype.bind) {
 		Function.prototype.bind = function (oThis) {
 			if (typeof this !== "function") {
@@ -30,6 +32,7 @@
 
 	/**
 	 * Id Dom indexs
+	 * parent 是为了兼容iframe
 	 */
 	function id(a){return window.parent.document.getElementById(a)}
 	
@@ -38,6 +41,7 @@
 	 *  param {String} str 
 	 *  param {String} val 
 	 *  If Id does not exist, add the style
+	 *  如果有自定义ID，将不会进行配置默认样式
 	 */
 	function addStyle(str,val){
 		if(Boolean(id(str))){
@@ -67,23 +71,25 @@
 	}
 	
 	// Avoid multiple imports, resulting in a different version of the first class
+	// 保证只运行一个
 	if(typeof window.xxy == 'object'){
 		console.error('Close the global object of XXY--xxy')
 		return false
 	}
 	
 	// styles
+	// 弹窗的样式，可自由配置
 	var popup = '#xxy-addDom .xxy-popup-box{position:fixed;top:0;left:0;z-index:99;z-index:99999999;overflow:hidden;width:100%;height:100%;background:rgba(0,0,0,.5);font-size:14px}#xxy-addDom .xxy-popup-box .inner{position:absolute;top:0;right:0;bottom:0;left:0;margin:auto;width:80%;height:0;max-width:280px;background:#fff;color:#646464}#xxy-addDom .xxy-popup-box .inner .inner_box{border:.01px solid #adadad;background:#fff;-webkit-transform:translateY(-50%);transform:translateY(-50%);-ms-transform:translateY(-50%)}#xxy-addDom .xxy-popup-box .xxy-popup-title{width:100%;border-bottom:1px solid #e8e8e8;background-color:#eee;color:#646464;text-align:left;text-indent:.7em;font-size:13px;line-height:2.1em}#xxy-addDom .xxy-popup-box .print{overflow:auto;padding:15px 20px 0;max-height:250px}#xxy-addDom .xxy-popup-box .or{margin:0 auto;width:90%}#xxy-addDom .xxy-popup-box button{border-radius:0px;margin:1em 0;padding:.6em 0;width:48%;border-width:0;border-radius:.4em;color:#fff}#xxy-addDom .xxy-popup-box .xxy-popup-done{background:#febb2c}#xxy-addDom .xxy-popup-box .xxy-popup-cancal{margin-left:4%;background:#eb4b27}#xxy-addDom .xxy-popup-box .off{float:right;margin-right:.4em;font-size:1.3em}#xxy-addDom .print_inner p span:nth-child(1){text-align:right}#xxy-addDom .print_inner p span:nth-child(2){text-align:center}#xxy-addDom .print_inner span{display:inline-block;width:48%}#xxy-addDom .print_inner p .important{color:#febb2c}'
 	,toast = '#xxy-addDom .xxy-toast{text-align: center;opacity:1;transition: all 1000ms;-webkit-transition: all 1000ms;position:fixed;bottom:2em;left:50%;padding:.2em 1em;border-radius:1em;background:rgba(0,0,0,.6);color:#fff;font-size:15px;line-height:1.7em;-webkit-transition-timing-function:ease;-webkit-transition-duration:2s;-webkit-transition-property:color;-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%);-ms-transform:translateX(-50%) translateY(-50%);min-width:10em}'
 	,touch = '.xxy-down-viewbox{position:relative;overflow:hidden;margin:auto;min-width:200px;min-height:200px;box-shadow:2px 2px 10px 1px rgba(0,0,0,.2);-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0);-ms-transform:translate3d(0,0,0);-webkit-backface-visibility:hidden;-ms-backface-visibility:hidden;backface-visibility:hidden;-webkit-perspective:1000;-ms-perspective:1000;perspective:1000}.xxy-down-viewbox>div{overflow:auto;width:100%;height:100%;border:0 solid transparent;background:#eee}.xxy-down-viewbox>div:before{top:0;content:attr(data-befor)}.xxy-down-viewbox>div:after,.xxy-down-viewbox>div:before{position:absolute;width:100%;color:#646464;text-align:center}.xxy-down-viewbox>div:after{bottom:5px;content:attr(data-after)}.xxy-down-viewbox>div>*{position:relative;z-index:1;background:#fff}'
 	,iosPopup = '#xxy-addDom .xxy-popup-box{position:fixed;top:0;left:0;z-index:99;z-index:99999999;overflow:hidden;width:100%;height:100%;background:rgba(0,0,0,.5);font-size:14px}#xxy-addDom .xxy-popup-box .inner{position:absolute;top:0;right:0;bottom:0;left:0;margin:auto;width:80%;height:0;max-width:280px;background:rgba(255,255,255,.95)}#xxy-addDom .xxy-popup-box .inner .inner_box{background:#fff;-webkit-transform:translateY(-50%);transform:translateY(-50%);-ms-transform:translateY(-50%);border-radius:13px}#xxy-addDom .xxy-popup-box .xxy-popup-title{font-size:18px;font-weight:500;text-align:center;padding-top:5px;line-height:2em}#xxy-addDom .xxy-popup-box .print{overflow:auto;padding:0 15px 15px 15px;max-height:250px}#xxy-addDom .xxy-popup-box .or{margin:0 auto;border-bottom-left-radius:13px;border-bottom-right-radius:13px;overflow:hidden}#xxy-addDom .xxy-popup-box button{border-radius:0px;;border-width:0;color:#007aff;background:#fff;background:rgba(255,255,255,.95);font-size:17px;line-height:44px;position:relative;overflow:hidden;box-sizing:border-box;width:50%;height:44px;padding:0 5px;cursor:pointer;text-align:center;white-space:nowrap;text-overflow:ellipsis;color:#007aff;background:rgba(255,255,255,.95);-webkit-box-flex:1;border-top:1px solid #cdcdcd}#xxy-addDom .xxy-popup-box .xxy-popup-cancal{border-left:1px solid #cdcdcd}#xxy-addDom .xxy-popup-box .off{float:right;margin-right:.4em;font-size:1.3em}#xxy-addDom .print_inner p span:nth-child(1){text-align:right}#xxy-addDom .print_inner p span:nth-child(2){text-align:center}#xxy-addDom .print_inner span{display:inline-block;width:48%}#xxy-addDom .print_inner p .important{color:#febb2c}';
 	
 	// add style
-	addStyle('xxy-style-popup',popup)
-	addStyle('xxy-style-toast',toast)
-	addStyle('xxy-style-touch',touch)
+	addStyle('xxy-style-popup', popup)
+	addStyle('xxy-style-toast', toast)
+	addStyle('xxy-style-touch', touch)
 	
-	// create xxy
+	// create Global var XXY
 	window.xxy = (function (){
 		// defaults config
 		var defaults = {
@@ -95,7 +101,7 @@
 		}
 		/**
 		 * preventDefault Prevent mobile end events from bubbling
-		 * For example, trigger higher div scroll
+		 * For example, trigger div scroll
 		 */
 		,preventDefaultEvent = function(e){
 			e.preventDefault()
@@ -103,13 +109,13 @@
 		,addDomName = 'xxy-addDom'
 		
 		// init return api
-		,_init= {
+		,_init = {
 			/**
 			 * mixin
 			 * param {Object} to 
 			 * param {Object} from 
 			 */
-			mixin: function(to,from){
+			mixin: function(to, from){
 				for(var i in from){
 					to[i] = from[i]
 				}
@@ -123,7 +129,7 @@
 			 * @param {Object} val
 			 * @param {Object} backcall
 			 */
-			getParent: function(box,key,val,backcall){
+			getParent: function(box, key, val, backcall){
 				try{
 					if(box[key] === val&&box[key] != void 0){
 						backcall(box)
@@ -141,7 +147,8 @@
 			},
 			
 			/**
-			 * config
+			 * 
+			 * @param {Object} obj
 			 */
 			config: function(obj){
 				if(Object.prototype.toString.call(obj) !== "[object Object]"){
@@ -157,33 +164,37 @@
 			 * @param {Object} b inner text
 			 * @param {Object} d baclcall
 			 */
-			popup:function(a,b,d){
+			popup:function(a, b, d){
 				var cs = arguments
 				,title = '提示'
 				,inner = ''
 				,deon_text = '确认'
 				,cancal_text = '取消'
-				,fun = false
+				// If call-back
+				,ifCallBack = false
+				// arguments case
+				,argumentsLength = cs.length
 				/**
 				 * default pupup ui
 				 */
 				,ui = (function(){
-						return this
-					}.bind(defaults.popupui))()
+					return this
+				}.bind(defaults.popupui))()
 				,box_name = 'xxy-popup-box'
 				,id_done = 'xxy-popup-done'
 				,id_cancal = 'xxy-popup-cancal'
-				,id_off = 'xxy-popup-off'
 				,anBaseStyle = 'transition: all 100ms;-webkit-transition: all 300ms'
 				
 				/**
 				 * 	clear to pupup
+				 * 删除上一个
 				 */
 				if(Boolean(id(box_name))) {
 					id(box_name).parentNode.removeChild(id(box_name))
 				}
 				
 				// PC scroll
+				// 电脑端滚动处理
 				document.documentElement.style.overflow = 'hidden'
 				document.body.style.overflow = 'hidden'
 				
@@ -193,7 +204,7 @@
 				 * @param {Object} a param
 				 * @param {Object} b order
 				 */
-				function callback(a,b){
+				function callback(a, b){
 					for(var i = 0; i < a.length; i++) {
 						if(typeof a[i] == 'function') {
 							a[i](b)
@@ -203,52 +214,33 @@
 				}
 				
 				// carry callback
+				// 寻找回调
 				for(var i = 0; i < arguments.length; i++){
-					typeof arguments[i] == 'function' ? fun = true : ''
+					typeof arguments[i] == 'function' ? ifCallBack = true : ''
 				}
 				
 				// init parmas 
-				if(!fun){
-					switch(cs.length){
-						case 1:
-							inner = cs[0]
-						break
-						case 2:
-							title = cs[0]
-							inner = cs[1]
-						break
-						case 4:
-							title = cs[0]
-							inner = cs[1]
-							deon_text = cs[2]
-							cancal_text = cs[3]
-						break
-						default:
-							console.error('Parameter format error！--xxy')
-					}
-				}else{
-					switch(cs.length){
-						case 2:
-							inner = cs[0]
-						break
-						case 3:
-							title = cs[0]
-							inner = cs[1]
-						break
-						case 4:
-							inner = cs[0]
-							deon_text = cs[1]
-							cancal_text = cs[2]
-						break
-						case 5:
-							title = cs[0]
-							inner = cs[1]
-							deon_text = cs[2]
-							cancal_text = cs[3]
-						break
-						default:
-							console.error('Parameter format error！--xxy')
-					}
+				switch(ifCallBack ? --argumentsLength : argumentsLength){
+					case 1:
+						inner = cs[0]
+					break
+					case 2:
+						title = cs[0]
+						inner = cs[1]
+					break
+					case 3:
+						inner = cs[0]
+						deon_text = cs[1]
+						cancal_text = cs[2]
+					break
+					case 4:
+						title = cs[0]
+						inner = cs[1]
+						deon_text = cs[2]
+						cancal_text = cs[3]
+					break
+					default:
+						console.error('Parameter format error！--xxy')
 				}
 				
 				// ios style
@@ -275,9 +267,7 @@
 							'<div class = "inner" style="',anBaseStyle,'opacity: 0;webkitTransform: scale(1.2,1.2);transform: scale(1.2,1.2)">',
 								'<div class = "inner_box">',
 									'<div class = "xxy-popup-inner">',
-										'<div class = "xxy-popup-title"> <i class = "iconfont icon-tishi"></i> ',title,
-											'<i id = "xxy-popup-off" class = "off icon iconfont icon-cha" id = "cash-off"></i>',
-										'</div>',
+										'<div class = "xxy-popup-title"> <i class = "iconfont icon-tishi"></i> ',title,'</div>',
 										'<div id = "xxy_popup_inner_print" class = "print">',inner,'</div>',
 									'</div>',
 									'<div class = "or">',
@@ -291,7 +281,7 @@
 					
 				// c add to div
 				if(document.body.insertAdjacentHTML){
-	            	id(addDomName).insertAdjacentHTML('beforeend',c);
+	            	id(addDomName).insertAdjacentHTML('beforeend',c)
 	            }else{
 	            	id(addDomName).innerHTML +=  c
 	            }
@@ -325,11 +315,11 @@
 					}
 					/*ie*/
 					id(id_done).onclick = function(){
-						callback(cs,0)	
+						callback(cs, 0)	
 						iexx()
 					}
 					id(id_done).onclick = function(){
-						callback(cs,1)	
+						callback(cs, 1)	
 						iexx()
 					}
 					return false
@@ -341,12 +331,12 @@
 				id(box_name).addEventListener('click',function(e){
 					var e = e.target
 					
-					if(e.id == id_done||e.id == id_cancal||e.id == id_off){
+					if(e.id == id_done || e.id == id_cancal){
 						/**
 						 * reload
 						 */
 						box_child.parentNode.removeChild(box_child)
-						window.parent.document.body.removeEventListener('touchmove',preventDefaultEvent,false)
+						window.parent.document.body.removeEventListener('touchmove', preventDefaultEvent,false)
 						// 'initial' body is set height , height not 100%
 						document.documentElement.style.overflow = 'initial'
 						document.body.style.overflow = 'initial'
@@ -355,15 +345,18 @@
 						 * callback
 						 * @params cs callback params
 						 */
-						e.id == id_done && callback(cs,0)	
-						e.id == id_cancal && callback(cs,1)
+						e.id == id_done && callback(cs, 0)	
+						e.id == id_cancal && callback(cs, 1)
 					}
 				})
 				
 			},
 			
 			/**
-			 * alert
+			 * Alert
+			 * @param {Object} a title text
+			 * @param {Object} b inner text
+			 * @param {Object} d baclcall
 			 */
 			alert: function(){
 				this.popup.apply(this, [].slice.call(arguments))
@@ -372,25 +365,26 @@
 				,button_child2 = window.parent.document.querySelector('#xxy-addDom .xxy-popup-box button')
 				
 				button_.innerText = '确认'
-				button_.style.cssText = 'display: block;marginLeft: auto;marginRight: auto;width: 100%'
+				button_.style.cssText = 'display: block;marginLeft: auto;marginRight: auto;width: 100%;border-left-width: 0px;'
 				button_child2.style.display = 'none'
-				id('xxy-popup-off').style.display = 'none'
 			},
 			
 			/**
-			 * toast
+			 * Toast
+			 * @param {Object} a inner
+			 * @param {Object} b time
 			 */
 			toast: function(a,b){
-				var time = (arguments[1]?b:2500)+1000
+				var time = (arguments[1] ? b : 2500)+1000
 				,id_name = 'xxy-toast'
 				,toast_div = document.createElement('div')
-				,toast_node =document.createTextNode(a)
+				,toast_node = document.createTextNode(a)
 				
 				// remove ement
 				if(id(id_name)){
 					var removeToast = id(id_name)
 					removeToast.parentNode.removeChild(removeToast)
-					this.toastRemveTime&&window.clearTimeout(this.toastRemveTime)
+					this.toastRemveTime && window.clearTimeout(this.toastRemveTime)
 				}
 				
 				// create ement
@@ -544,17 +538,18 @@
 					}
 				}
 			},
+			
 			slider : function(){
 				function cors(banner,config){
 			        var banner = banner
-			        var list = banner.children[0]
-			        var rootWidth = -banner.getBoundingClientRect().width
-			        var startX = 0
-			        var index = 0
-			        var translateX = 0
-			        var tid = void 0
-			        var lis = void 0
-			        var points = void 0
+			        ,list = banner.children[0]
+			        ,rootWidth = -banner.getBoundingClientRect().width
+			        ,startX = 0
+			        ,index = 0
+			        ,translateX = 0
+			        ,tid = void 0
+			        ,lis = void 0
+			        ,points = void 0
 					
 			        init()
 			        autoPlay()
