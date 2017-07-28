@@ -289,11 +289,21 @@
                     // create Dom then _var
                     var box_child = id(box_name)
                         ,innerBox = window.parent.document.querySelector("#xxy-popup-box .inner")
-
+					
+					/**
+					 * 恢复
+					 */
+					function innerScaleSiza(){
+						innerBox.style.cssText = anBaseStyle+'opacity: 1;webkitTransform: scale(1,1);transform: scale(1,1)'
+					}
+					
+					// 虽然设置过渡，但是会被浏览过滤，所以相当于没有动画
+					if(!ui.an)innerScaleSiza()
+                    
                     // ios an
                     if(ui.an){
                         window.setTimeout(function(){
-                            innerBox.style.cssText = anBaseStyle+'opacity: 1;webkitTransform: scale(1,1);transform: scale(1,1)'
+                          innerScaleSiza()
                         },50)
                     }
 
