@@ -56,6 +56,8 @@ xxy.alert('内容',function(){
     // 回调
 }); 
 ```
+## popupClose
+代码关闭弹窗
 ## toast:
 ```js
  xxy.toast('内容','消失时间[ms]');
