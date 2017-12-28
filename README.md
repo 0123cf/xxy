@@ -56,8 +56,22 @@ xxy.alert('内容',function(){
     // 回调
 }); 
 ```
+## template
+#### 自定义模板内容
+例：
+```
+xxy.template(`
+	<div>div内容</div>
+	<h3 onclick="xxy.popupClose()">关闭</h3>
+`)
+```
+
 ## popupClose
 代码关闭弹窗
+```
+xxy.popupClose()
+```
+
 ## toast:
 ```js
  xxy.toast('内容','消失时间[ms]');
