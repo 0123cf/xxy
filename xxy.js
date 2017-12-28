@@ -391,6 +391,7 @@
   
           template: function (html){
             xxy.popup('')
+            document.querySelector('#xxy-addDom .inner_box').style.cssText = 'border-radius:  0;'
             document.querySelector('#xxy-addDom .inner_box').innerHTML = html
           },
 
