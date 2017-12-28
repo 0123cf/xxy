@@ -183,10 +183,6 @@ baner.on('gap',function(e){
 })
 ```
 
-支持弹性滚动，例子： http://yx.mysy.vip/test/%E5%8E%BB%E5%93%AA%E5%84%BF%E9%80%80%E7%A5%A8/
-
-
-
 
   [1]: https://0123cf.github.io/www/
   
@@ -198,6 +194,8 @@ baner.on('gap',function(e){
 - 添加alert函数
 - 添加支持多指触控，上拉加载，下拉刷新。
 - 添加上下拉回调
+- 添加关闭函数
+- 添加自定义模板
 
 ### LICENSE
 
