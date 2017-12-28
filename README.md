@@ -52,9 +52,9 @@ xxy.popup('标题'，'内容,支持插入标签','左按钮文字','右按钮文
 
 ## alert:
 ```js
-xxy.alert('内容',function(){
-    // 回调
-}); 
+xxy.alert('标题','HTML','按钮文字',function(){
+	console.log('回调')
+})
 ```
 ## template
 #### 自定义模板内容
