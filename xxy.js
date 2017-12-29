@@ -378,13 +378,26 @@
            */
           alert: function () {
             var params = [].slice.call(arguments)
-            params.push('')
+              , paramsLen =  params.length
+              
+            for (var i = 0; i < arguments.length; i++) {
+              typeof arguments[i] == 'function' ? paramsLen -= 1 : ''
+            }
+            console.log(paramsLen)
+            console.log(params)
+            if(paramsLen == 3){
+              params.push('')
+            }
             this.popup.apply(this, params)
   
             var button_ = window.parent.document.querySelector('#xxy-addDom #xxy-popup-cancal')
               , button_child2 = window.parent.document.querySelector('#xxy-addDom .xxy-popup-box button')
   
-            button_.innerText = arguments[2] ? arguments[2] : '确认'
+            if(paramsLen == 3){
+              button_.innerText = arguments[2] ? arguments[2] : '确认'
+            }else {
+              button_.innerText = '确认'
+            }
             button_.style.cssText = 'display: block;margin-left: auto;margin-right: auto;width: 100%;border-left-width: 0px;'
             button_child2.style.display = 'none'
           },
