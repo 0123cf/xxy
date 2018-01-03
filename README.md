@@ -10,6 +10,8 @@
 npm install xxy
 ```
 
+*Tips: npm的账号密码我忘了，所以，上面的npm安装版本是很早以前的版本，大概去年的，所以大家请用conle*
+
 #### SRC
 ```
 https://0123cf.github.io/xxy/xxy.min.js
