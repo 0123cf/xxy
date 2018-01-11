@@ -70,13 +70,41 @@ xxy.alert('标题','HTML','按钮文字',function(){
 ```
 ## template
 #### 自定义模板内容
-例：
+参数介绍
 ```
-xxy.template(`
-	<div>div内容</div>
-	<h3 onclick="xxy.popupClose()">关闭</h3>
-`)
+xxy.template(html内容)
+//xxy.template(`
+//	<div>div内容</div>
+//	<off>关闭</off>
+//`)
+xxy.template(querySelectOr)
+// xxy.template('#id')
+// xxy.template('#id .class')
 ```
+tips：
+不用off的话，也可以用xxy.popupClose()关闭弹窗
+在vmmv框架里面一般用了off这个标签都会红色不明标签提示，忽略即可
+
+在vue里面的使用的例模板的例子：
+```
+template:
+      <div style="display: none">
+        <div class="op-coupon-group">
+            <ul>
+              <li v-for="item in couponList">{{item.name}}</li>
+            </ul>
+            <off>关闭</off>
+          </div>
+        </div>
+      </div>
+
+js:
+xxy.template('.op-coupon-group')
+```
+
+
+
+
 
 ## popupClose
 代码关闭弹窗
