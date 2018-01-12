@@ -20,7 +20,7 @@ https://0123cf.github.io/xxy/xxy.min.js
 ```
 # Usage
 ## config:
-```js
+``` js
 // 配置  非必选项
 var config = {
     // 蒙版不透明度 默认.5
@@ -37,7 +37,7 @@ xxy.config(config);
  */
 ```
 ##### Div Style
-``` style
+``` html
 <style id="{{config}}"></style>
 config:
     xxy-style-popup <!-- 弹窗 -->
@@ -45,7 +45,7 @@ config:
     xxy-style-touch <!-- 上下拉滑动 --> 
 ```
 ## popup:
-```js
+``` js
 xxy.popup('标题'，'内容,支持插入标签','左按钮文字','右按钮文字',function(e){ 
   //点击后回调： 
   //e==0 点击了左按钮，e==1 点击右按钮 
@@ -60,7 +60,7 @@ xxy.popup('标题'，'内容,支持插入标签','左按钮文字','右按钮文
 ```
 
 ## alert:
-```js
+``` js
 xxy.alert('标题','HTML','按钮文字',function(){
 	console.log('回调')
 })
@@ -73,7 +73,7 @@ xxy.alert('标题','HTML','按钮文字',function(){
 ## template
 #### 自定义模板内容
 参数介绍
-```
+``` js
 xxy.template(html内容)
 //xxy.template(`
 //	<div>div内容</div>
@@ -88,8 +88,8 @@ tips：
 在vmmv框架里面一般用了off这个标签都会红色不明标签提示，忽略即可
 
 在vue里面的使用的例模板的例子：
-```
-template:
+``` html
+<template>
       <div style="display: none">
         <div class="op-coupon-group">
             <ul>
@@ -99,8 +99,9 @@ template:
           </div>
         </div>
       </div>
-
-js:
+</template>
+```
+``` js
 xxy.template('.op-coupon-group')
 ```
 
@@ -115,9 +116,27 @@ xxy.popupClose()
 ```
 
 ## toast:
-```js
+
+``` js
  xxy.toast('内容','消失时间[ms]');
+ // xxy.toast('内容','方向（bottom, top, center）');
 ```
+
+第二个参数可以是时间也可以是方向，更多复杂的操作，第二个参数是Object
+
+
+``` js
+xxy.toast(000, {
+	exp: 500,
+	site: 'center', 
+	more: {
+		'width': '100px',
+		'border-radius': '5px',
+		'background': 'rgba(255,0,0,.4)'
+	}
+})
+```
+
 ## 上拉刷新，下拉加载
 
 > * 创建Div容器 最外层的ID自定义 
@@ -139,12 +158,12 @@ xxy.popupClose()
 </div>
 ```
 ### Javascript
-```javascript
+``` js
 	var test= new xxy.touch()
 	test.bind(Dom节点,config)
 ```
 ###### config	
-```javascript
+``` js
 {
 	//滑动 默认false 设置true开启
 	move: true,
@@ -157,7 +176,7 @@ xxy.popupClose()
 
 ###### backcall
 
-```javascript
+``` js
 function(){
   ajax.get(url)
    .then(()={
@@ -168,7 +187,7 @@ function(){
 ```
 #### Javascript测试代码
 
-```javascript
+``` js
 var test= new xxy.touch();
 	test.bind(document.querySelector('#comlist'),{
 		move: true,
@@ -210,7 +229,7 @@ var test= new xxy.touch();
 
 ```
 ### Javascript
-```javascript
+``` js
 // 轮播
 var baner = xxy.slider()
 var bConfig = {
