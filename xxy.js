@@ -442,11 +442,39 @@
 
         /**
          * Toast
-         * @param {Object} a inner
-         * @param {Object} b time
+         * @param {Object} inner Inner
+         * @param {Object} config Config Or Time site  exp: time, site: (top, bottom, center)
          */
-        toast: function (a, b) {
-          var time = (arguments[1] ? b : 2500) + 1000
+        toast: function (inner, config) {
+          //  analytic parameter
+          if (config) {
+            if (Object.prototype.toString.call(config) !== "[object Object]") {
+              // initialize
+              // assertion
+              switch (Object.prototype.toString.call(config)) {
+                case "[object Number]": {
+                  config = {
+                    exp: config
+                  }
+                  break
+                }
+                case "[object String]": {
+                  config = {
+                    site: config
+                  }
+                  break
+                }
+              }
+            }
+          } else {
+            config = {}
+          }
+
+          var configParam = {
+            time: config.exp || 2500,
+            site: config.site || 'bottom'
+          }
+            , time = configParam.time + 10
             , id_name = 'xxy-toast'
             , toast_div = document.createElement('div')
 
@@ -458,12 +486,38 @@
           }
 
           // create ement
-          toast_div.innerHTML = '<div>' + a + '</div>'
+          toast_div.innerHTML = '<div>' + inner + '</div>'
           toast_div.id = id_name
           toast_div.className = id_name
+          function setToastStyle() {
+            // Site
+            switch (config.site) {
+              case "center": {
+                toast_div.style.cssText = 'bottom: calc(50% - 1.5em);'
+                break
+              }
+              case "top": {
+                toast_div.style.cssText = 'top: 20vw; bottom: auto;'
+                break
+              }
+            }
+            // more ...
+            if (config.more) {
+              if (Object.prototype.toString.call(config.more) == "[object Object]") {
+                for (var item in config.more) {
+                  toast_div.children[0].style.cssText += ';' + item + ':' + config.more[item]
+                }
+              } else {
+                console.log('%c XXY: 参数错误', 'color: red')
+              }
+            }
+
+          }
+
 
           // add new && to remove ement
           id(addDomName).appendChild(toast_div)
+          setToastStyle()
           this.toastRemveTime = window.setTimeout(function () {
             id(id_name).parentNode.removeChild(id(id_name))
           }, time)
