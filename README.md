@@ -127,9 +127,9 @@ xxy.popupClose()
 
 ``` js
 xxy.toast(000, {
-	exp: 500,
-	site: 'center', 
-	more: {
+	exp: 500, // 消失时间
+	site: 'center',  // 垂直位置
+	more: { // 自定义样式
 		'width': '100px',
 		'border-radius': '5px',
 		'background': 'rgba(255,0,0,.4)'
