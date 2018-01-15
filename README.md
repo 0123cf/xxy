@@ -186,9 +186,9 @@ xxy.config('toast', {
 	//滑动 默认false 设置true开启
 	move: true,
 	//上拉回调
-	up: backcall
+	up: callback
 	//下拉回调
-	down: backcall
+	down: callback
 }
 ```	
 
