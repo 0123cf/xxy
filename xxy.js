@@ -95,7 +95,8 @@
         skin: void 0,
         mask: .5,
         an: false
-      }
+      },
+      toastui: {}
     }
       /**
        * preventDefault Prevent mobile end events from bubbling
@@ -148,16 +149,32 @@
         },
 
         /**
-         *
-         * @param {Object} obj
+         * defaults config
+         * @param {Object} config
          */
-        config: function (obj) {
-          if (Object.prototype.toString.call(obj) !== "[object Object]") {
+        config: function () {
+          var lastParam = arguments[arguments.length - 1]
+            , firstParam = arguments[0]
+          if (Object.prototype.toString.call(lastParam) !== "[object Object]") {
             console.error('Parameters should be objects--xxy\n docs: https://github.com/0123cf/xxy')
             return false
           }
-          this.mixin(defaults.popupui, obj)
+
+          switch (firstParam) {
+            case lastParam: {
+              this.mixin(defaults.popupui, lastParam)
+              break
+            }
+            case 'toast': {
+              this.mixin(defaults['toastui'], lastParam)
+              break
+            }
+            default: {
+              console.log('XXY -- Config the first param cannot find corresponding module')
+            }
+          }
         },
+
         /**
          * void
          * 关闭弹窗
@@ -467,7 +484,7 @@
               }
             }
           } else {
-            config = {}
+            config = defaults.toastui
           }
 
           var configParam = {
