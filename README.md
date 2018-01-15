@@ -31,6 +31,9 @@ var config = {
     an: true
 };
 xxy.config(config);
+
+默认一个参数的时候，是popup的配置，toast的配置需要前面加toast
+xxy.config('toast', config见下面的toast介绍)
 /* 
  * tips:
  * 目前只配置了ios，安卓还未添加（欢迎大家提交pr）
@@ -136,6 +139,21 @@ xxy.toast(000, {
 	}
 })
 ```
+
+如果一组都需要配置相同的，这时候应该使用组配置，比如regist模块需要用特定的toast
+
+``` js
+xxy.config('toast', {
+	exp: 2000,
+	site: 'center',
+	more: {
+		'width': '100px',
+		'border-radius': '5px',
+		'background': 'rgba(51,51,51,.5)'
+	}
+})
+```
+
 
 ## 上拉刷新，下拉加载
 
@@ -259,6 +277,7 @@ baner.on('gap',function(e){
 - 添加弹窗关闭函数
 - 添加弹窗自定义模板
 - 调整流畅度，添加滑动的硬件加速
+- 添加toast的自定义样式配置和全局配置（组配置）
 
 ### LICENSE
 
