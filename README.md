@@ -16,7 +16,7 @@ npm install xxy
 
 #### SRC
 ```
-https://0123cf.github.io/xxy/xxy.min.js
+https://0123cf.github.io/xxy/xxy.js
 ```
 # Usage
 ## config:
