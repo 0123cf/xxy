@@ -425,13 +425,14 @@
           button_child2.style.display = 'none'
         },
 
-        template: function (str) {
+        template: function (str, callback) {
           var boxId = 'xxy-popup-box'
             , style = document.createElement('style')
             , tagname = 'off'
             , offFun = function (e) {
               this.getParent(e.target, 'tagName', tagname.toUpperCase(), function (element) {
                 this.popupClose()
+                callback()
                 document.head.removeChild(style)
               }.bind(this))
             }
