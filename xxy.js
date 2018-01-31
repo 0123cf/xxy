@@ -431,8 +431,12 @@
             , tagname = 'off'
             , offFun = function (e) {
               this.getParent(e.target, 'tagName', tagname.toUpperCase(), function (element) {
+                var params = void 0
+                for(var key in element.dataset){
+                  key.substring(0, 3) == 'xxy' && (params = key.split('xxy')[1].toLowerCase())
+                }
                 this.popupClose()
-                callback()
+                callback(params)
                 document.head.removeChild(style)
               }.bind(this))
             }
