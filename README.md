@@ -77,7 +77,7 @@ xxy.alert('标题','HTML','按钮文字',function(){
 #### 自定义模板内容
 参数介绍
 ``` js
-xxy.template(html内容)
+xxy.template(html内容, callback)   // callback可选， 点击后回调
 //xxy.template(`
 //	<div>div内容</div>
 //	<off>关闭</off>
