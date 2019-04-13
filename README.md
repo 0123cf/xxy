@@ -290,6 +290,3 @@ baner.on('gap',function(e){
 - 调整流畅度，添加滑动的硬件加速
 - 添加toast的自定义样式配置和全局配置（组配置）
 
-### LICENSE
-
-MIT
